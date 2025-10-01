@@ -11,3 +11,6 @@ just compress it or upload all file on that folder to hosting or someone can hos
   >done:3
 You can also explore and edit the template (this repo) or edit the index after build the site on public folder that created.
   >enjoy>3
+
+zola build (for create the builded site and public folder will be created)
+zola serve (just for test and the public folder will be delete after exit the processes)
