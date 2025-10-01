@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card a-white">
+    <div class="card-content">
+        <div class="title">
+            {{ section.title }}
+        </div>
+        <div class="des">{{ section.description }}</div>
+    </div>
+</div>
+
+<br />
+
+<div class="body-content">
+    {% if section.extra.section_type is defined and section.extra.section_type == "music" %}
+        <link rel="stylesheet" href="/music-taste.css">
+        <div class="album-grid">
+            {% include "partials/music-taste.html" %}
+        </div>
+    {% else %}
+        {{ section.content | safe }}
+        <ul>
+            {% for page in section.pages %}
+            <li>{{ page.date }} - <a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+            {% endfor %}
+        </ul>
+
+            
+          
+    {% endif %}
+</div>
+{% endblock content %}

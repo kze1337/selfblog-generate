@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | De-Google my tablet</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      De-Google my tablet
+    </div>
+    <div class="des">
+      Having Google Service on a 2GB RAM device is suck
+    </div>
+    <div class="date">
+      <strong>2025-01-27</strong>
+    </div>
+  </div>
+</div>
+
+<p>I got this tablet (thanks C00kiez), which is an Samsung Galaxy Tab A8 8.0 (2019), model SM-T295. At the time I received the tablet, it was runing Android 11, the highest official firmware from Samsung, so the device was at the worst performance, with just 32GB storage and 2GB RAM.</p>
+<p>So the first thing to do was to install a <a href="https://en.wikipedia.org/wiki/List_of_custom_Android_distributions">custom ROM</a>, for a better software exprience. Now of course, this is not a well known tablet in the market. In fact, till now I almost can't find any of stable built AOSP ROM for this tablet, so the second solution for this was to use an <a href="https://developer.android.com/topic/generic-system-image">GSI</a>. There are a lot of choice for <a href="https://github.com/phhusson/treble_experimentations/wiki/Generic-System-Image-%28GSI%29-list">GSI build</a>, but before that, I was using a GSI build of SuperiorOS that was built by <a href="https://stdrice.github.io">stdrice</a> specifically for this SM-T295 model, and although the perfomance of the tablet on that built was really good, I switched to another GSI build called <a href="https://github.com/xiaoleGun/treble_build_miku">Miku UI</a> that I built myself (don't try this), just for the fun of it, beside that it does not have many major impact compare to the old build. The build also does not included GApps, that are required for Google Services.</p>
+<p><img src="https://k4ahr.work/blog/tablet/2.jpg" alt="" /></p>
+<p>And I think that is the hardest part for the process. The rest is the setup that I use for my tablet. MOST of my application that I use here are open-sourced:</p>
+<ul>
+<li>
+<p>Application store:</p>
+<ul>
+<li><a href="https://github.com/Droid-ify/client">Droid-ify</a>: A forked F-Droid, with more feature and Material UI built-in.</li>
+<li><a href="https://github.com/whyorean/AuroraStore">Aurora Store</a>: Google Play Store alternative, open-sourced and no Google Account required.</li>
+</ul>
+</li>
+<li>
+<p>Entertainment:</p>
+<ul>
+<li><a href="https://github.com/libre-tube/LibreTube">LibreTube</a>: An alternative frontend for YouTube, for Android. Kinda buggy tho.</li>
+<li><a href="https://github.com/mostafaalagamy/Metrolist">Metrolist</a>: Same with LibreTube, but for music.</li>
+<li><a href="https://github.com/KotatsuApp/Kotatsu">Kotatsu</a>: Manga reader for Android.</li>
+<li><a href="https://github.com/pystardust/ani-cli">ani-cli</a>: A cli tool to browse and play anime, required a terminal emulator like Termux.</li>
+<li><a href="https://github.com/lichess-org/lichobile/">lichess</a>: In case of offline, I can't beat Stockfish Lvl 3.</li>
+</ul>
+</li>
+<li>
+<p>Other general use:</p>
+<ul>
+<li><a href="https://www.mozilla.org/vi/firefox/">Firefox</a>: I haven't found a good Firefox's folk for mobile.</li>
+<li><a href="https://github.com/fcitx5-android/fcitx5-android">fcitx5-android</a>: Suprisingly they do have Unikey plugin for Vietnamese typing.</li>
+<li><a href="https://github.com/termux/termux-app">Termux</a>: An terminal emulator, I used to edit this website using Vim in Termux during military training.</li>
+<li><a href="https://codeberg.org/ottoptj/yamlauncher">YAML Launcher</a>: A more lightweight fork of OLauncher</li>
+<li><a href="https://github.com/videolan/vlc">VLC</a>: Regular media player for video and music.</li>
+</ul>
+</li>
+</ul>
+<p>That's about it! Well mostly I use the tablet for manga reading and listening to music, rather than using for other heavy work, but it's nice to have a de-Googled device that respects my privacy and runs smoothly.</p>
+<p><img src="https://k4ahr.work/blog/tablet/3.jpg" alt="" /></p>
+
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

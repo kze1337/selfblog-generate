@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-image: none;
+        background-color: #0000aa;
+    }
+</style>
+<section style="background-color: #0000aa; background-image: none; color: #ffffff; font-family: 'Lucida Console', Monaco, monospace; font-size: 16px; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0;">
+    <div style="text-align: left; max-width: 800px;">
+        <h1 style="background-color: #aaaaaa; color: #000000; display: inline; padding: 2px 6px;">404 NOT FOUND</h1>
+        <p>A fatal exception <strong>404</strong> has occurred by CRYPTON:CV01 in VXD VFAT(01) + 0YdgmKjUG-o. The current page will be terminated.</p>
+        <p>* Click <a href="{{ get_url(path='/') }}">here</a> to return to the homepage.<br>
+        * Press CTRL+ALT+DEL to restart your browser. You will lose any unsaved information in all applications.</p>
+        <p>Press any key to do nothing...</p>
+    </div>
+</section>
+
+
+{% endblock content %}

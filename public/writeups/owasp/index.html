@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | OWASP Top 10</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      OWASP Top 10
+    </div>
+    <div class="des">
+      chắc là part 1
+    </div>
+    <div class="date">
+      <strong>2025-08-12</strong>
+    </div>
+  </div>
+</div>
+
+<p>OWASP Top 10 là danh sách 10 rủi ro bảo mật phổ biến và nghiêm trọng nhất trong phát triển ứng dụng web, được OWASP (Open Web Application Security Project) tổng hợp và cập nhật định kỳ dựa trên dữ liệu thực tế từ các tổ chức bảo mật và cộng đồng.</p>
+<p>Nó đóng vai trò như một tiêu chuẩn tham khảo để lập trình viên, tester, và chuyên gia an ninh mạng biết được những lỗ hổng nào cần ưu tiên xử lý. Danh sách này bao gồm:</p>
+<ul>
+<li>Injection</li>
+<li>Broken Authentication</li>
+<li>Sensitive Data Exposure</li>
+<li>XML External Entity</li>
+<li>Broken Access Control</li>
+<li>Security Misconfiguration</li>
+<li>Cross-site Scripting</li>
+<li>Insecure Deserialization</li>
+<li>Components with Known Vulnerabilities</li>
+<li>Insufficent Logging &amp; Monitoring</li>
+</ul>
+<h1 id="1-injection">1. Injection</h1>
+<p>Lỗi Injection xảy ra khi dữ liệu do người dùng nhập vào được ứng dụng hiểu và xử lý như lệnh hoặc tham số thực, dẫn đến nguy cơ bị tấn công. Một số dạng phổ biến gồm:</p>
+<ul>
+<li>SQL Injection: Kẻ tấn công chèn lệnh SQL vào truy vấn để thay đổi, truy cập hoặc xóa dữ liệu.</li>
+<li>Command Injection: Kẻ tấn công chèn lệnh hệ thống để thực thi trên máy chủ.</li>
+</ul>
+<p>Hậu quả có thể là đánh cắp thông tin nhạy cảm, chiếm quyền hệ thống, hoặc thực hiện các cuộc tấn công khác.</p>
+<p>Biện pháp phòng tránh:</p>
+<ul>
+<li>Allow list: Chỉ chấp nhận dữ liệu đã được định nghĩa là an toàn.</li>
+<li>Loại bỏ ký tự nguy hiểm trước khi xử lý.</li>
+<li>Sử dụng thư viện chuyên dụng để kiểm soát và lọc dữ liệu đầu vào.</li>
+</ul>
+<p>Command Injection là lỗ hổng web xảy ra khi mã phía server (như PHP) gọi lệnh hệ thống và kẻ tấn công lợi dụng để thực thi lệnh trên máy chủ. Ban đầu, họ có thể chỉ chạy các lệnh đơn giản như <code>whoami</code> hoặc đọc file, nhưng nguy hiểm nhất là mở <strong>reverse shell</strong> (ví dụ <code>;nc -e /bin/bash</code>) để chiếm quyền dưới tài khoản mà web server đang chạy. Khi đã xâm nhập, kẻ tấn công có thể dò quét hệ thống và tìm cách mở rộng tấn công sang các hệ thống khác.</p>
+<p>Mình sẽ vào Task 5 của mục OWASP Top 10 bởi tryhackme.com và bắt đầu vào instance của nó.</p>
+<ul>
+<li>What strange text file is in the website root directory?: Mình sẽ sử dụng lệnh <code>ls</code> để hiển thị các file trong root directory của web server</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/1.png" alt="" /></p>
+<p>Câu trả lời sẽ là <code>drpepper.txt</code></p>
+<ul>
+<li>How many non-root/non-service/non-daemon users are there?: Sử dụng lệnh <code>cat /etc/passwd</code> sẽ hiển thị các trình</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/2.png" alt="" /></p>
+<p>Nếu để ý kỹ, ta sẽ thấy không thật sự có tài khoản nào giống một tài khoản người dùng bình thường với shell thật như <code>/bin/bash</code> hay <code>/bin/zsh</code>. Vậy câu trả lời sẽ là 0.</p>
+<ul>
+<li>What user is this app running as?: Ta chỉ đơn giản sử dụng lệnh <code>whoami</code> để biết được cái shell này đang sử dụng user nào.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/3.png" alt="" /></p>
+<ul>
+<li>What is the user's shell set as?: Sử dụng lệnh <code>getent passwd "tên user"</code> để lấy shell được đặt cho user đó, ví dụ với root mặc định, ta sẽ có kết quả là <code>/bin/bash</code>.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/4.png" alt="" /></p>
+<ul>
+<li>What version of Ubuntu is running?: Ta có thể kiểm tra phiên bản của một hệ điều hành Linux qua câu lệnh <code>cat /etc/os-release</code>.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/5.png" alt="" /></p>
+<ul>
+<li>Print out the MOTD.  What favorite beverage is shown?: MOTD (Message of the Day) là thông điệp hiển thị khi đăng nhập vào Linux/Unix, thường dùng để chào mừng hoặc thông báo tình trạng hệ thống và được lưu ở <code>/etc/</code>, đầu tiên mình sẽ dùng <code>ls</code> và <code>grep</code> để tìm file, sau đó đọc bằng <code>cat</code>.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/6.png" alt="" />
+<img src="https://k4ahr.work/writeups/owasp/7.png" alt="" />
+<img src="https://k4ahr.work/writeups/owasp/8.png" alt="" /></p>
+<p><em>Thực ra là làm cho biết chứ từ câu một đã có thể đoán được là Dr.Pepper rồi:v</em></p>
+<h1 id="2-broken-authentication">2. Broken Authentication</h1>
+<p>Xác thực và quản lý phiên là thành phần cốt lõi của ứng dụng web.</p>
+<ul>
+<li>
+<p><strong>Xác thực</strong>: Thường dùng tên đăng nhập và mật khẩu, nếu đúng sẽ cấp <strong>session cookie</strong> để duy trì trạng thái người dùng (vì HTTP(S) là stateless).</p>
+</li>
+<li>
+<p><strong>Những vấn đề có thể gặp phải:</strong>:</p>
+<ul>
+<li><strong>Brute force</strong>: Thử nhiều lần để đoán tài khoản/mật khẩu.</li>
+<li><strong>Mật khẩu yếu</strong>: Cho phép đặt mật khẩu dễ đoán như <code>password1</code>.</li>
+<li><strong>Session cookie yếu</strong>: Giá trị dễ đoán, kẻ tấn công có thể giả mạo.</li>
+</ul>
+</li>
+<li>
+<p><strong>Một số biện pháp xử lí</strong>:</p>
+<ul>
+<li>Áp dụng chính sách mật khẩu mạnh.</li>
+<li>Khóa tài khoản sau số lần đăng nhập thất bại nhất định.</li>
+<li>Sử dụng <strong>đa yếu tố xác thực (MFA)</strong> để tăng bảo mật.</li>
+</ul>
+</li>
+</ul>
+<p>Tiếp theo mình sẽ vào Task 7 và bắt đầu vào instance của nó.</p>
+<p>Theo đề bài, nếu ta đăng ký sử dụng tên tài khoản đã có, nhưng với 1 vài chỉnh sửa nhỏ như 1 cái dấu cách, ta hoàn toàn có thể truy cập dữ liệu tài khoản đó. Ta sẽ tạo 1 tài khoản là " darren", với cái dấu cách đó và login vào hệ thống.</p>
+<ul>
+<li>What is the flag that you found in darren's account?: Có một đoạn mã ngắn có vẻ chính là flag ta đang tìm.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/9.png" alt="" /></p>
+<ul>
+<li>
+<p>Now try to do the same trick and see if you can login as arthur: Ta sẽ làm điều tương tự với tài khoản arthur.</p>
+</li>
+<li>
+<p>What is the flag that you found in darren's account?: Tương tự.
+<img src="https://k4ahr.work/writeups/owasp/10.png" alt="" /></p>
+</li>
+</ul>
+<h1 id="3-sensitive-data-exposure">3. Sensitive Data Exposure</h1>
+<p>Sensitive Data Exposure xảy ra khi ứng dụng web vô tình tiết lộ dữ liệu nhạy cảm như thông tin cá nhân, tài chính, hoặc thông tin kỹ thuật (tài khoản, mật khẩu). Nguyên nhân có thể từ:</p>
+<ul>
+<li>
+<p>Tấn công Man-in-the-Middle: Kẻ tấn công chặn kết nối và lợi dụng mã hóa yếu hoặc không mã hóa để lấy dữ liệu.</p>
+</li>
+<li>
+<p>Cấu hình kém: Dữ liệu nhạy cảm có thể nằm trực tiếp trên máy chủ và bị truy cập dễ dàng.</p>
+</li>
+</ul>
+<p>Lỗ hổng dạng này có thể nghiêm trọng nhưng đôi khi lại rất đơn giản để khai thác, không cần kiến thức mạng phức tạp.</p>
+<p>Mình sẽ vào Task 11 và bắt đầu vào instance của nó.</p>
+<ul>
+<li>What is the name of the mentioned directory?: View page source của trang web app, ta thấy có một thư mục chứa tấm hình ảnh trên trang web <code>assets</code>, có vẻ đó chính là thư mục cần tìm.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/11.png" alt="" /></p>
+<ul>
+<li>Navigate to the directory you found in question one. What file stands out as being likely to contain sensitive data?: Chui vào trong thư mục <code>assets</code> bằng cách thêm vào sau địa chỉ của webapp, ta sẽ thấy 1 file database <del>mà đáng nhẽ nó không nên ở đó?</del></li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/12.png" alt="" /></p>
+<p>Use the supporting material to access the sensitive data. What is the password hash of the admin user?: Mình sẽ lấy file database trước đó bằng <code>wget</code> vào trong hệ thống Linux của mình, và sử dụng <code>sqlite3</code> như document của tryhackme trước đó nói và tìm ra password hash của admin.</p>
+<p><img src="https://k4ahr.work/writeups/owasp/13.png" alt="" /></p>
+<ul>
+<li>What is the admin's plaintext password?: Sử dụng <a href="https://crackstation.net/">crackstation.net</a> và nhập hash trước đó, ta có password của admin trước đó được mã hoá bằng md5.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/14.png" alt="" /></p>
+<ul>
+<li>Login as the admin. What is the flag?: Quay lại webapp trước đó, đăng nhập với mật khẩu admin ta tìm được và ta đã có flag cần tìm.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/owasp/15.png" alt="" /></p>
+
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

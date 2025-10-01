@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | TJCTF 2025</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      TJCTF 2025
+    </div>
+    <div class="des">
+      One of the first I guess
+    </div>
+    <div class="date">
+      <strong>2025-06-08</strong>
+    </div>
+  </div>
+</div>
+
+<p>TJCTF 2025 có thể nói là một trong những cuộc thi CTF quốc tế đầu tiên mà mình tham gia cùng với đồng đội, với team <a href="https://ctftime.org/team/387182">0day@freddy</a>. Mặc dù không phải là những cuộc thi CTF đầu tiên của mình, nhưng mình lại chưa thực sự giải được nhiều challenges so với mọi người trong team. Đây sẽ là writeups về những challenge mà mình đã giải được.</p>
+<h1 id="misc-guess-my-number">misc/guess-my-number</h1>
+<p>Một bài phải gọi là vua của cơ bản, đoán lấy con số đúng trong khoảng từ 1 đến 1000 trong 10 lượt đoán. Kỹ thuật ở đây là luôn đoán con số ở chính giữa, từ đó dẽ dàng loại trừ và tìm đoán lấy con số tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/tjctf/guess.png" alt="" /></p>
+<h1 id="misc-mouse-trail">misc/mouse-trail</h1>
+<p>Chúng ta được cấp 1 file text <em>mouse_movements.txt</em> theo đề bài, là toạ độ di chuyển của chuột. Kiểm tra thì ta thấy hơn 4000 dòng toạ độ x và y được log lại vào file text. Ta có thể biểu diễn toạ độ của file text này lên một trục toạ độ Đề-các (Descartes) bằng thư viện Matplotlib trong python. Sau một lúc sử dụng chatGPT để tạo script sử dụng Matplotlib và nhập toạ độ từ file <em>mouse_movements.txt</em>, ta có kết quả sau trên hệ trục toạ độ.</p>
+<p><img src="https://k4ahr.work/writeups/tjctf/mouse.png" alt="" /></p>
+<h1 id="web-loopy">web/loopy</h1>
+<p>Đề bài là liệu chúng ta có thể truy cập vào trang admin với port 5000. Instance được cấp là một tool xuất toàn bộ content HTML của một website. Để xuất được trang admin của chính instance, ta chỉ cần điều hướng chính nó về localhost, với port 5000 vào trang /admin. Mình đã thử với URL <code>https://localhost:5000/admin</code>, tuy nhiên hệ thống chặn với thông báo như sau:</p>
+<ul>
+<li>Access denied. URL parameter included one or more of the following banned keywords: [::], 017700000001, 0.0.0.0, ffff, ::1, 2130706433, local, 127</li>
+</ul>
+<p>Vậy có nghĩa là <code>localhost</code> và <code>127.0.0.1</code> đều bị chặn do chứa <code>local</code> và <code>127</code>. Tuy nhiên trong list cũng có một số là <code>017700000001</code>, khi tách ra thành <code>0177.00.00.01</code> thì đây lại chính là hệ bát phân khi chuyển từ hệ thập phân của 127.0.0.1, nên mình đã thử <code>https://0177.00.00.01:5000/admin</code>, và bypass thành công hệ thống chặn.</p>
+<p><img src="https://k4ahr.work/writeups/tjctf/loopy.png" alt="" /></p>
+<h1 id="web-texploit">web/TeXploit</h1>
+<p>Ta được cung cấp một trình biên dịch LaTeX online. LaTeX là một ngôn ngữ để eyecandy các tài liệu văn bản, ví dụ như luận văn, sách hoặc bài báo, và chạy trên một hệ thống gọi là Tex, mà trong đó chứa những câu lệnh đơn giản mà ta có thể khai thác để lấy flag. Mục tiêu là đọc nội dung của file /flag.txt mà không thể truy cập trực tiếp (như với \input), do một vài keyword đã bị blacklist.</p>
+<p>Sử dụng những câu lệnh của LaTex, ta có một payload sau:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>\newread\foo            # Khai báo lấy một input stream tên \foo
+</span><span>\openin\foo=/flag.txt   # Mở file /flag.txt và đưa vào \foo
+</span><span>\read\foo to\bar        # Đọc một dòng đầu tiên từ file /flag.txt, và lưu nội dung vào biến \bar
+</span><span>\errmessage{FLAG:\bar}  # Tạo một thông báo lỗi và kẹp biến \bar chứa flag vào trong đó
+</span><span>\closein\foo            # Đóng input stream \foo, không cần thiết đâu nhưng mà trông nó gọn
+</span></code></pre>
+<p>Sau khi hệ thống xử lí và báo lỗi thì thông báo lỗi mà ta tạo trước đó với biến \bar chứa flag sẽ được đưa ra cùng trong Log.</p>
+<p><img src="https://k4ahr.work/writeups/tjctf/latex.png" alt="" /></p>
+
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

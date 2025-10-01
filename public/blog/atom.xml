@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>K4ahr's blog posts</title>
+        <link>https:&#x2F;&#x2F;k4ahr.work/blog/</link>
+        <description>Yapping about everything, in life, tech, resources or something else.</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://k4ahr.work/blog/atom.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 19 Mar 2025 00:00:00 +0000</lastBuildDate>
+        
+        <item>
+            <title>Linux, why you should use it, but also... not?</title>
+            <pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate>
+            <author>
+                
+                    K4ahr
+                
+            </author>
+            <link>https://k4ahr.work/blog/linux/</link>
+            <guid>https://k4ahr.work/blog/linux/</guid>
+            <description xml:base="https://k4ahr.work/blog/linux/">
+                
+                    &lt;p&gt;Headlines has been crazed when Microsoft annouced the device requirements for Windows 11, right after Windows 10 end of support. This also caused the rise of medias and stuffs about making the switch to Linux. Like no joke, try to search the phrase &quot;switch to linux&quot; on YouTube, and you will see dozen, if not hundred of videos about making the switch from Windows to Linux.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;linux&#x2F;trend.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;For the most part, I do agree about the movement. Linux desktop has done a really good job in recent years, and it does fit the needs of most user bases, whether it&#x27;s gaming, office work, or programming, because for most of it, every piece of software nowadays has its own open-sourced alternative. Of course, talking about gaming, some games do not run natively and require being run through some tools like Proton, but honestly, gaming on Linux has been performed seamlessly. That also explained many gaming consoles, like the Steam Deck, which uses a build of Arch Linux and still becomes one of the best-selling consoles worldwide. Not to mention that Linux is a free operating system, as in both price and freedom, hence you can even compile your own Linux kernel and build stuff from scratch.&lt;&#x2F;p&gt;
+&lt;p&gt;And for this, I told one of my friends about switching to Linux when I heard about his abomination, an HP laptop, suffering from bad performance. So I installed EndeavourOS (fuck Ubuntu) for him, and a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;stdrice&#x2F;pengurice&quot;&gt;rice made by stdrice&lt;&#x2F;a&gt;. He did have some confusion at first when using it, but after almost a month, he said it was fascinating. He can use it without any problems and also utilize the terminal fluently. He even preferred apps and software that use CLI instead of traditional GUI-based software, quoting, &quot;This shit looks clean as fuck.&quot; But after almost a year, I had to switch him back to Windows 10 LTSC due to a lack of proprietary software support that was required by his educational institution, poor gaming performance, and other problems related to troubleshooting and stuff. To be fair, he did really get into the Linux rabbit hole, learned to modify the pre-built config after his preference, and was even somewhat hesitant to switch back to Windows. The total amount of time he daily drove Linux was almost a year. Kudos to him for actually giving a shot at the beginning.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;linux&#x2F;image.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s important to acknowledge that Linux might not be the perfect fit for everyone. There are certain scenarios where sticking with Windows or macOS could be more beneficial. For instance, if you rely heavily on specific software that is only available on Windows or macOS, switching to Linux might disrupt your workflow. It is explained for me why I can&#x27;t use Linux daily drive like old time before, due to the need of software for my work like Adobe suites and some unsupported game like Valorant, because of its kernel-level anti-cheat.&lt;&#x2F;p&gt;
+&lt;p&gt;And as for that, I have decided to stopped using Linux for daily drive after years, but rather treat it as an Operating System Labs for research, works and &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Capture_the_flag_(cybersecurity)&quot;&gt;CTFs plays&lt;&#x2F;a&gt;, which I mostly use through virtual machine or &lt;a href=&quot;https:&#x2F;&#x2F;learn.microsoft.com&#x2F;en-us&#x2F;windows&#x2F;wsl&#x2F;&quot;&gt;WSL&lt;&#x2F;a&gt;.
+&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;linux&#x2F;wsl.png&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I know it&#x27;s not just about the lightweight and stuff; it&#x27;s about freedom and privacy. But sometimes, you get what you paid for. I mean, at least if you are still concerned about privacy when using Windows, just install an LTSC version and use some GitHub tool like &lt;a href=&quot;https:&#x2F;&#x2F;privacy.sexy&#x2F;&quot;&gt;privacy.sexy&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ChrisTitusTech&#x2F;winutil&quot;&gt;WinUtil&lt;&#x2F;a&gt; to debloat and remove all the telemetry. But at the end of day, its all about you, so choose whatever fit you best, don&#x27;t force yourself to follow the movement if you&#x27;re not comfortable about using Linux.&lt;&#x2F;p&gt;
+
+                
+            </description>
+        </item>
+        
+        <item>
+            <title>De-Google my tablet</title>
+            <pubDate>Mon, 27 Jan 2025 00:00:00 +0000</pubDate>
+            <author>
+                
+                    K4ahr
+                
+            </author>
+            <link>https://k4ahr.work/blog/tablet/</link>
+            <guid>https://k4ahr.work/blog/tablet/</guid>
+            <description xml:base="https://k4ahr.work/blog/tablet/">
+                
+                    &lt;p&gt;I got this tablet (thanks C00kiez), which is an Samsung Galaxy Tab A8 8.0 (2019), model SM-T295. At the time I received the tablet, it was runing Android 11, the highest official firmware from Samsung, so the device was at the worst performance, with just 32GB storage and 2GB RAM.&lt;&#x2F;p&gt;
+&lt;p&gt;So the first thing to do was to install a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;List_of_custom_Android_distributions&quot;&gt;custom ROM&lt;&#x2F;a&gt;, for a better software exprience. Now of course, this is not a well known tablet in the market. In fact, till now I almost can&#x27;t find any of stable built AOSP ROM for this tablet, so the second solution for this was to use an &lt;a href=&quot;https:&#x2F;&#x2F;developer.android.com&#x2F;topic&#x2F;generic-system-image&quot;&gt;GSI&lt;&#x2F;a&gt;. There are a lot of choice for &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;phhusson&#x2F;treble_experimentations&#x2F;wiki&#x2F;Generic-System-Image-%28GSI%29-list&quot;&gt;GSI build&lt;&#x2F;a&gt;, but before that, I was using a GSI build of SuperiorOS that was built by &lt;a href=&quot;https:&#x2F;&#x2F;stdrice.github.io&quot;&gt;stdrice&lt;&#x2F;a&gt; specifically for this SM-T295 model, and although the perfomance of the tablet on that built was really good, I switched to another GSI build called &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;xiaoleGun&#x2F;treble_build_miku&quot;&gt;Miku UI&lt;&#x2F;a&gt; that I built myself (don&#x27;t try this), just for the fun of it, beside that it does not have many major impact compare to the old build. The build also does not included GApps, that are required for Google Services.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;tablet&#x2F;2.jpg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;And I think that is the hardest part for the process. The rest is the setup that I use for my tablet. MOST of my application that I use here are open-sourced:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Application store:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Droid-ify&#x2F;client&quot;&gt;Droid-ify&lt;&#x2F;a&gt;: A forked F-Droid, with more feature and Material UI built-in.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;whyorean&#x2F;AuroraStore&quot;&gt;Aurora Store&lt;&#x2F;a&gt;: Google Play Store alternative, open-sourced and no Google Account required.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Entertainment:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;libre-tube&#x2F;LibreTube&quot;&gt;LibreTube&lt;&#x2F;a&gt;: An alternative frontend for YouTube, for Android. Kinda buggy tho.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;mostafaalagamy&#x2F;Metrolist&quot;&gt;Metrolist&lt;&#x2F;a&gt;: Same with LibreTube, but for music.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;KotatsuApp&#x2F;Kotatsu&quot;&gt;Kotatsu&lt;&#x2F;a&gt;: Manga reader for Android.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;pystardust&#x2F;ani-cli&quot;&gt;ani-cli&lt;&#x2F;a&gt;: A cli tool to browse and play anime, required a terminal emulator like Termux.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lichess-org&#x2F;lichobile&#x2F;&quot;&gt;lichess&lt;&#x2F;a&gt;: In case of offline, I can&#x27;t beat Stockfish Lvl 3.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Other general use:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.mozilla.org&#x2F;vi&#x2F;firefox&#x2F;&quot;&gt;Firefox&lt;&#x2F;a&gt;: I haven&#x27;t found a good Firefox&#x27;s folk for mobile.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;fcitx5-android&#x2F;fcitx5-android&quot;&gt;fcitx5-android&lt;&#x2F;a&gt;: Suprisingly they do have Unikey plugin for Vietnamese typing.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;termux&#x2F;termux-app&quot;&gt;Termux&lt;&#x2F;a&gt;: An terminal emulator, I used to edit this website using Vim in Termux during military training.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;codeberg.org&#x2F;ottoptj&#x2F;yamlauncher&quot;&gt;YAML Launcher&lt;&#x2F;a&gt;: A more lightweight fork of OLauncher&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;videolan&#x2F;vlc&quot;&gt;VLC&lt;&#x2F;a&gt;: Regular media player for video and music.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;That&#x27;s about it! Well mostly I use the tablet for manga reading and listening to music, rather than using for other heavy work, but it&#x27;s nice to have a de-Googled device that respects my privacy and runs smoothly.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;tablet&#x2F;3.jpg&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+                
+            </description>
+        </item>
+        
+        <item>
+            <title>Why I stop using Facebook in 2025</title>
+            <pubDate>Mon, 13 Jan 2025 00:00:00 +0000</pubDate>
+            <author>
+                
+                    K4ahr
+                
+            </author>
+            <link>https://k4ahr.work/blog/facebook/</link>
+            <guid>https://k4ahr.work/blog/facebook/</guid>
+            <description xml:base="https://k4ahr.work/blog/facebook/">
+                
+                    &lt;p&gt;After 10 years using Facebook as one of my main social media platforms, I have decided to take a step away from the platform. Some of the reasons include:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bad sources of content, including misinformation, reposts, and clickbait.&lt;&#x2F;li&gt;
+&lt;li&gt;Privacy concerns, especially with data being sold to third parties.&lt;&#x2F;li&gt;
+&lt;li&gt;The addictive nature of the platform, leading to wasted time and reduced productivity.&lt;&#x2F;li&gt;
+&lt;li&gt;The lack of meaningful interactions and the prevalence of superficial connections.&lt;&#x2F;li&gt;
+&lt;li&gt;Toxicity is still a thing, at least in &lt;a href=&quot;https:&#x2F;&#x2F;e.vnexpress.net&#x2F;news&#x2F;news&#x2F;microsoft-survey-finds-vietnamese-among-least-civil-online-4060000.html&quot;&gt;my country&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The user base of Facebook has been declining since 2018 among most countries, yet it&#x27;s still the most used platform in SEA, as people do not have many alternatives that offer the same level of connectivity and features like Twitter (X) and Reddit (until the recent release of Threads).&lt;&#x2F;p&gt;
+&lt;p&gt;Here are some of the alternatives that I use:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;For messaging: Discord&lt;&#x2F;li&gt;
+&lt;li&gt;For news: traditional RSS feeds&lt;&#x2F;li&gt;
+&lt;li&gt;For image posting: Instagram&lt;&#x2F;li&gt;
+&lt;li&gt;For entertaining&#x2F;learning: YouTube&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;As for me, I do not fully &quot;quit&quot; Facebook, as I still use it reluctantly because of my work on some Facebook pages at the university and my usage of Messenger (this sucks). I stopped using it as my mainstream platform for the media, as also one step of reducing my time on social media. It&#x27;s been a month since I stopped using Facebook and made this post, and it is one of my best decisions so far to start 2025.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;facebook&#x2F;facebook.gif&quot; alt=&quot;&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+
+                
+            </description>
+        </item>
+        
+        <item>
+            <title>Protecting yourself from the &quot;World Wild Web&quot;</title>
+            <pubDate>Sun, 29 Dec 2024 00:00:00 +0000</pubDate>
+            <author>
+                
+                    K4ahr
+                
+            </author>
+            <link>https://k4ahr.work/blog/protect/</link>
+            <guid>https://k4ahr.work/blog/protect/</guid>
+            <description xml:base="https://k4ahr.work/blog/protect/">
+                
+                    &lt;p&gt;What you have seen of the Internet is most likely just a little tip of the iceberg, so sometimes you just have to protect yourself from it every time you&#x27;re online on the web. I&#x27;m going to give you some guides, from the basic to the most advanced method of protecting you from the obscure internet.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;bare-minimum-firewall&quot;&gt;Bare minimum: Firewall&lt;&#x2F;h3&gt;
+&lt;p&gt;Firewall is the first line of defense for your computer, it&#x27;s like a gatekeeper that filters the incoming and outgoing traffic of your computer. Most of the operating systems have a built-in firewall, like Windows Firewall for Windows, or UFW for Linux, which are all preconfigured basic level of firewall that&#x27;s capable of denying unauthorized access by filtering network traffic and blocking malicious content. You can also use third-party firewall software, like GlassWire or ZoneAlarm.&lt;&#x2F;p&gt;
+&lt;p&gt;Most firewalls are enabled by default, but if you&#x27;re wondering if it&#x27;s enabled on your machine or not, here&#x27;s a quick overview:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;win_fw.png&quot; alt=&quot;&quot; title=&quot;Windows Firewall settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  Windows: Go to Control Panel &gt; System and Security &gt; Windows Defender Firewall
+&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;macos_fw.PNG&quot; alt=&quot;&quot; title=&quot;MacOS Firewall settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  MacOS: Go to System Preferences &gt; Security &amp; Privacy &gt; Firewall
+&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;linux_fw.jpg&quot; alt=&quot;&quot; title=&quot;Linux Firewall settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  Linux: Open a terminal and type &lt;code&gt;sudo ufw status&lt;&#x2F;code&gt;
+&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;intermediate-software-and-security-up-to-date&quot;&gt;Intermediate : Software and Security up-to-date&lt;&#x2F;h3&gt;
+&lt;p&gt;Keeping your software and security up-to-date is the next step to protect yourself from the hidden dangers of the internet. Most of the time, software updates are released to fix bugs and vulnerabilities that can be exploited by hackers. It&#x27;s important to keep your software up-to-date, especially your operating system, web browser, and antivirus software.&lt;&#x2F;p&gt;
+&lt;p&gt;Most of the operating systems have an automatic update feature, so you don&#x27;t have to worry about updating your system manually. For Windows, you can go to Settings &amp;gt; Update &amp;amp; Security &amp;gt; Windows Update, and for MacOS, you can go to System Preferences &amp;gt; Software Update.&lt;&#x2F;p&gt;
+&lt;p&gt;This is also one of the main reasons why you should not use any end-of-support (EOS) operating system such as Windows 7 or lower, as most of them do not have up-to-date security patches and are vulnerable to attacks.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;update.png&quot; alt=&quot;&quot; title=&quot;Windows Update settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;advanced-adblock-and-host-file&quot;&gt;Advanced: Adblock and &quot;host&quot; file&lt;&#x2F;h3&gt;
+&lt;p&gt;Ad blockers are browser extensions that block ads on websites, which can also block malicious content and trackers. There are many ad blockers available, but for my personal reference, I would recommend you to use &lt;a href=&quot;https:&#x2F;&#x2F;ublockorigin.com&#x2F;&quot;&gt;uBlock Origin&lt;&#x2F;a&gt;, although Chrome&#x27;s newest Manifest v3 update may affect its functionality (everyone thanks Google !!).&lt;&#x2F;p&gt;
+&lt;p&gt;Another method is to use the &quot;host&quot; file to block malicious websites. The &quot;host&quot; file is a text file that maps hostnames to IP addresses, and you can use it to block access to certain websites by redirecting them to a non-existent IP address. You can find the &quot;host&quot; file in the following directory:&lt;&#x2F;p&gt;
+&lt;p&gt;Windows: &lt;code&gt;C:\Windows\System32\drivers\etc\hosts&lt;&#x2F;code&gt; (You may have to open it using any text editor with administrator privilege)&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;host.png&quot; alt=&quot;&quot; title=&quot;Host file settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I recommend to check out &lt;a href=&quot;https:&#x2F;&#x2F;someonewhocares.org&#x2F;hosts&#x2F;&quot;&gt;someonewhocares&#x27;s host file&lt;&#x2F;a&gt;, which contains many of dangerous websites and trackers. They also have a short guide for installation in other OS such as macos and Linux.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;optional-adguard-home&quot;&gt;Optional: AdGuard Home&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;AdguardTeam&#x2F;AdGuardHome&quot;&gt;AdGuard Home&lt;&#x2F;a&gt; is a network-wide software for blocking ads and tracking. After you set it up, it&#x27;ll cover ALL your home devices, and you don&#x27;t need any client-side software for that. It acts as a DNS server that filters out ads and trackers. It&#x27;s a bit more advanced than using an ad blocker, which required a local VPS like a homelab, a Rasberry Pi, or a router that has firmware support such as &lt;a href=&quot;https:&#x2F;&#x2F;openwrt.org&#x2F;&quot;&gt;OpenWrt&lt;&#x2F;a&gt;, but it&#x27;s worth it if you want to protect all your devices from ads and trackers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;protect&#x2F;adguard.png&quot; alt=&quot;&quot; title=&quot;MY AdGuard Home settings&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h3&gt;
+&lt;p&gt;Protecting yourself from the obscure internet is important, as the Internet is a vast place with many dangers. By following these guides, you can protect yourself from most of the threats that are lurking on the web. Remember, it&#x27;s better to be safe than sorry, and trust me, you would never want your data being exposed on the web.&lt;&#x2F;p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  &lt;img src=&quot;neighborhoodsmall.gif&quot; style=&quot;display: inline-block; &quot; width=&quot;88&quot;&gt;
+  &lt;img src=&quot;virusalert.gif&quot; style=&quot;display: inline-block; &quot; width=&quot;88&quot;&gt;
+&lt;&#x2F;p&gt;
+                
+            </description>
+        </item>
+        
+        <item>
+            <title>Using iPod in 2024</title>
+            <pubDate>Mon, 09 Dec 2024 00:00:00 +0000</pubDate>
+            <author>
+                
+                    K4ahr
+                
+            </author>
+            <link>https://k4ahr.work/blog/ipod/</link>
+            <guid>https://k4ahr.work/blog/ipod/</guid>
+            <description xml:base="https://k4ahr.work/blog/ipod/">
+                
+                    &lt;p&gt;There is a recent trend lately about using iPods — Apple&#x27;s infamous music device back in the 2000s, as alternative for most of the music streaming services nowadays, like Spotify or Apple Music. The &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;ipod&#x2F;comments&#x2F;188gf5u&#x2F;what_exactly_is_the_point_of_using_an_ipod&#x2F;&quot;&gt;medias&lt;&#x2F;a&gt; are claiming that using a external device for music playing gives you many multiple advantages that related to distraction in working and ownership of the music that you listening to.&lt;&#x2F;p&gt;
+&lt;p&gt;So I bought one for myself to check out if all the hypes were real. In October I bought a second-hand iPod Classic 5 (aka iPod Video) from Neyako for $50, which was a good deal at the moment since the demand for iPods was really high. The iPod has been replaced with a brand new battery and modified with a brand new 120GB SSD.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;ipod&#x2F;ipod1.jpg&quot; alt=&quot;&quot; title=&quot;Image of the iPod when I recieved&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-hype-is-real&quot;&gt;The hype is real&lt;&#x2F;h3&gt;
+&lt;p&gt;After two months of using the iPod (as of the time this post is being written), I can confirm that the hype was true. Using an iPod does help me reduce distraction and procrastination when compared to listening to music on my smartphone, as I can focus more on most of my work. Using a phone can lead to other unnecessary activities, such as browsing social media or other distractions.&lt;&#x2F;p&gt;
+&lt;p&gt;Using an iPod also makes me appreciate each and every song that I have on my iPod. Of course, I&#x27;m using a modified firmware called &lt;a href=&quot;https:&#x2F;&#x2F;www.rockbox.org&#x2F;&quot;&gt;Rockbox&lt;&#x2F;a&gt;, so I can&#x27;t say that I have the &quot;legal&quot; ownership to every song in my iPod, but at least I do have control over my music rather than having a subscription for music streaming services. Not to mention, the music quality has a huge boost when I switch from my phone with a TWS headphone to an iPod with an IEM headphone, which is a Moondrop Lan.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;k4ahr.work&#x2F;blog&#x2F;ipod&#x2F;ipod2.jpg&quot; alt=&quot;&quot; title=&quot;a&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-cons&quot;&gt;The cons&lt;&#x2F;h3&gt;
+&lt;p&gt;Talking back and forth, iPod also has its cons. No matter if you use purchased music from iTunes or ripped from other services, it&#x27;s troublesome and inconvenient to always have a computer for adding or removing music. Another thing is that I use last.fm, so my listened tracks cannot be scrobbled, but to my surprise, Rockbox actually supports last.fm music scrobbling; it&#x27;s just that the scrobbling has to be imported manually.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;should-you-buy-an-ipod-in-2025&quot;&gt;Should you buy an iPod in 2025 ?&lt;&#x2F;h3&gt;
+&lt;p&gt;If you are the kind of person that loves music, and you also love old tech, then you should definitely buy an iPod for a better music experience, with also a nostalgic feeling.&lt;&#x2F;p&gt;
+
+                
+            </description>
+        </item>
+        
+    </channel>
+</rss>

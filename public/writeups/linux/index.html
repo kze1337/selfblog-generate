@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | Linux từ mức cơ bản nhất</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      Linux từ mức cơ bản nhất
+    </div>
+    <div class="des">
+      i use arch btw
+    </div>
+    <div class="date">
+      <strong>2025-02-06</strong>
+    </div>
+  </div>
+</div>
+
+<p>Linux là một trong những hệ điều hành khá hay mà ai theo CNTT cũng nên học. Khác biệt với những hệ điều hành khác như Windows và macOS, Linux là một hệ điều hành mã nguồn mở, chính vì vậy mà Linux có thể được tuỳ chỉnh từ ngoài vào trong.</p>
+<p>Nếu là người mới sử dụng, sẽ có cảm giác khó tiếp cận một chút, vì cách hoạt động của Linux khác với Windows. Đa số những tác vụ ta làm trên Linux sẽ thông qua cửa sổ lệnh Bash, hay còn gọi là Terminal. Đây sẽ là một số những yếu tố ta sẽ cần quan tâm khi sử dụng Linux, với các ví dụ sau sẽ được sử dụng qua Ubuntu, một bản phân phối phổ biến của Linux:</p>
+<h1 id="1-file-va-cau-truc-cua-no"><em><strong>1. File và cấu trúc của nó</strong></em></h1>
+<p>Khác với Windows và cách hoạt động là chia ổ cứng thành nhiều phân vùng với đường dẫn file riêng biệt mà ta biết như "C:" hay "D:", trong Linux tất cả các file sẽ đều chứa trong "/", hay còn được gọi là "Root directory". Root directory, hay chính là thư mục gốc, và tất cả cấu trúc và dữ liệu của Linux sẽ được chứa từ đây và bắt đầu chia ra thành nhiều thư mục con.</p>
+<p><img src="https://k4ahr.work/writeups/linux/directory.png" alt="" /></p>
+<p style="text-align:center">Nguồn: @Fireship</p>
+<p>Đối với Windows, mỗi phân vùng ổ cứng tạo ra một thư mục gốc, nhưng trong Linux, phân vùng mà mang thư mục gốc "/", sẽ chứa những phân vùng còn lại, tuỳ thuộc vào việc phân vùng đó được mount vào đâu. Dưới đây sẽ là một ví dụ:</p>
+<p>Chạy lệnh <code>lsblk</code> vào trong terminal, ta có kết quả sau:
+<img src="https://k4ahr.work/writeups/linux/lsblk.png" alt="" />
+Máy ảo này hiện đang có 1 ổ cứng <strong>sda</strong> chứa 20GB và 1 ổ cứng <strong>sdb</strong> chứa 5GB. Trong đó, ổ cứng <strong>sda</strong> được chia thành 2 phân vùng là <strong>sda1</strong> và <strong>sda2</strong>. Ta sẽ bỏ qua <strong>sda1</strong> do đây là phân vùng để chứa BIOS Boot (ubuntu momento).</p>
+<p>Hiện tại, <strong>sda2</strong> đang có mountpoint là "/", tức là <strong>sda2</strong> đang chứa toàn bộ đường dẫn của hệ thống, còn <strong>sdb</strong> thì chưa được mount vào máy ảo. Bây giờ ta sẽ mount ổ cứng <strong>sdb</strong> này vào trong thiết bị, với lệnh sau:</p>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>    $ sudo mount /dev/sdb /mnt
+</span></code></pre>
+<p>Ta sẽ thấy ổ cứng <strong>sdb</strong> đã được mount vào máy ảo, và có thể truy cập tại đường dẫn <code>/mnt</code>
+<img src="https://k4ahr.work/writeups/linux/mount.png" alt="" /></p>
+<p>Từ đó ta thấy được, rằng cho dù có chia ra bao phân vùng, một hệ thống Linux sẽ chỉ có một thư mục gốc "/", chứa toàn bộ dữ liệu của máy.</p>
+<p>Vì "/" mang cấp cao nhất trong hệ thống file của Linux, nên mọi chỉnh sửa xung quanh thư mục "/" sẽ cần quyền truy cập cao nhất, hay còn gọi là "root". Thông thường, đối với những thiết bị Linux, người dùng lưu trữ và sử dụng các file sẽ được chứa trong thư mục "/home/'ten_nguoi_dung'", hay trong hệ thống được biết đến là đường dẫn "~". Những thư mục này thường sẽ được cấp quyền sửa đổi trực tiếp cho chính người dùng đó.
+<img src="https://k4ahr.work/writeups/linux/home.png" alt="" /></p>
+<p style="text-align:center">Ví dụ của một thư mục /home</p>
+<p>Ngoài ra những thư mục chứa kí tự đầu trong tên thư mục bằng dấu ".", hay còn được gọi là "dotfiles" sẽ thường bị ẩn theo mặc định. Những thư mục này thường chứa các file config cho phần mềm, và được Linux ẩn để tránh bị chỉnh sửa không mong muốn.
+<img src="https://k4ahr.work/writeups/linux/dotfiles.png" alt="" /></p>
+<p style="text-align:center">Các thư mục dotfiles bị ẩn</p>
+<p>Ngoài thư mục "/home", một hệ thống Linux còn có những thư mục thiết yếu sau:</p>
+<ul>
+<li>/boot: Chứa kernel và bootloader sử dụng khi khởi động máy</li>
+<li>/dev: Chứa các thông tin và driver của thiết bị ngoại vi</li>
+<li>/etc: Chứa các file config hệ thống</li>
+<li>/var: Chứa các file log</li>
+<li>/bin: Chứa binary của hệ thống</li>
+</ul>
+<p>Một số lệnh cơ bản để hoạt động trong thư mục của Linux:</p>
+<ul>
+<li><code>cd</code>: Thay đổi thư mục</li>
+<li><code>ls</code>: Hiện danh sách những files và folder trong thư mục đó</li>
+<li><code>mkdir</code>: Tạo thư mục mới</li>
+<li><code>rm</code>: Xoá files (để xoá thư mục sử dụng <code>rm -r</code>)</li>
+<li><code>pwd</code>: Xuất đường dẫn của thư mục hiện tại</li>
+<li><code>echo</code>: In ra một chuỗi kí tự gì đó ra cửa sổ lệnh</li>
+<li><code>base64</code>: Sử dụng để encode/decode dữ liệu từ/thành base64, ví dụ như <code>aSB1c2UgYXJjaCBidHc=</code></li>
+</ul>
+<h1 id="2-process-trong-linux"><em><strong>2. Process trong Linux</strong></em></h1>
+<p>Process, hay tiến trình, hiểu nhanh chính là những chương trình hay những tác vụ đang chạy. Thông thường mỗi câu lệnh được thực thi trong Linux sẽ tạo ra một process mới.</p>
+<p>Ta sẽ sử dụng chương trình "btop" để xem những process đang chạy trong hệ thống:
+<img src="https://k4ahr.work/writeups/linux/process.png" alt="" /></p>
+<p>Nhìn nhanh trong tấm screenshot trên, ta có thấy rằng mỗi process mang 1 PID (Process ID) riêng biệt.</p>
+<p>Có hai loại process chính:</p>
+<ul>
+<li>Foreground Process: Những process này thường được kích hoạt ngay sau khi nhập lệnh, và đồng thời trong cùng khoảng một thời gian không thể có thêm bất kỳ nhập lệnh nào khác.</li>
+<li>Background Process: Những process này thường chạy trong hệ thống mà không cần bắt buộc nhập liệu nào từ người dùng. Chính vì vậy, những process này có thể chạy song song trong cùng một thời điểm.</li>
+</ul>
+<p>Ngoài ra, trong Linux có Daemon Process, là những background process liên quan đến hệ thống nhưng lại cần quyền hạn từ root và hoạt động cùng với những process khác.</p>
+<h1 id="3-user-va-group-trong-linux"><em><strong>3. User và group trong Linux</strong></em></h1>
+<p>User và group được sử dụng với mục đích chiếm quyền điều khiểu và truy cập các file, thư mục, phần mềm, vân vân và mây mây.</p>
+<p>Ta có thể hiểu đơn giản, 1 user (hay người dùng), chính là đại diện cho 1 người nào đó sử dụng máy tính, được phân biệt bằng một username riêng biệt và bảo vệ bằng mật khẩu, và một hệ thống Linux có thể chứa không giới hạn người dùng.</p>
+<p>Khi khởi động thiết bị, để bắt đầu truy cập và sử dụng hệ thống, người dùng cần phải nhập hoặc chọn username và nhập mật khẩu tương ứng.
+<img src="https://k4ahr.work/writeups/linux/login.png" alt="" /></p>
+<p style="text-align:center">Màn hình đăng nhập Linux</p>
+<p>Chính vì không có giới hạn là bao nhiêu user trong Linux, nên để quản lý toàn bộ tất cả các user, Linux sẽ có một Superuser, hay được biết là tài khoản "root". Tài khoản root có được quyền truy cập và sửa đổi hệ thống cao nhất, với không một giới hạn. Ngoài ra, cũng giống như Process, mỗi user có một ID riêng biệt gọi là UID, với user mang UID 0 chính là tài khoản "root".</p>
+<p>Có hai cách để truy cập vào tài khoản root: Đăng nhập bằng username "root" ngay sau khi khởi động Linux, hoặc chạy lệnh "su" và nhập mật khẩu. Như screenshot ở dưới, mình đã truy cập từ tài khoản với username là "k4ahr" sang tài khoản "root".
+<img src="https://k4ahr.work/writeups/linux/su.png" alt="" /></p>
+<p style="text-align:center">Tài khoản root</p>
+<p>Tuy nhiên, việc liên tục sử dụng tài khoản root mang rất nhiều rủi ro về bảo mật, chính vì vậy để sử dụng quyền hạn cao nhất tạm thời, ta sử dụng lệnh "sudo &lt;lệnh_muốn_sử_dụng&gt;"</p>
+<p>Group (nhóm) về đơn giản là các nhóm được phân chia cho các tài khoản user. Mỗi group có thể chứa nhiều user, nhằm tối ưu dễ dàng hơn trong việc phân ra các quyền hạn cho các user, với mỗi group mang một ID riêng biệt gọi là GID.</p>
+<p>Mặc dù mỗi máy tính cá nhân như PC thông thường hay laptop chạy Linux thường chỉ có một người sử dụng, khiến cho việc phân chia quyền hạn cho nhiều user và các group user nghe có vẻ vô nghĩa, nhưng trên thực tế vì hơn 96,4% các hệ thống server chạy Linux, nên việc phân chia user và group rất quan trọng, phục vụ cho các vấn đề an ninh và bảo mật hệ thống, cũng như giới hạn các user và group với những quyền hạn được cấp nhất định.</p>
+<p>Và sẵn nói đến quyền hạn....</p>
+<h1 id="4-phan-quyen-trong-linux"><em><strong>4. Phân quyền trong Linux</strong></em></h1>
+<p>Trong hệ thống Linux, tất cả các hoạt động đều được dựa trên quyền hạn của ba hoạt động chính:</p>
+<ul>
+<li>Write: Cho phép người dùng tạo hoặc chỉnh sửa file và hệ thống.</li>
+<li>Read: Cho phép người đọc file và hệ thống.</li>
+<li>Execute: Cho phép người dùng thực thi các hoạt động hoặc lệnh từ file và hệ thống.</li>
+</ul>
+<p>Ta sẽ bắt đầu bằng việc chạy lệnh "ls -l" để liệt kê phân quyền của các file trong thư mục "/home/k4ahr", hay chính là thư mục user của mình:
+<img src="https://k4ahr.work/writeups/linux/ls.png" alt="" /></p>
+<p>Ta sẽ tập chung vào cột đầu tiên, lấy ví dụ một dòng giá trị tương tự là "drwxrwxrwx", phân tích nhanh thành "d rwx rwx rwx" để cho dễ nhìn 1 chút, ta có những giữ liệu như sau:</p>
+<ul>
+<li>"d": Ký hiệu rằng đây là 1 thư mục</li>
+<li>"rwx" thứ nhất: Hiển thị quyền hạn mà chủ nhân của file vào trong chính file đó</li>
+<li>"rwx" thứ hai: Hiển thị quyền hạn mà group người dùng có lên file đó</li>
+<li>"rwx" thứ ba: Hiển thị quyền hạn mà user có lên file đó</li>
+</ul>
+<p>Giờ ta sẽ phân tích ý nghĩa các ký hiệu nằm trong cụm "rwx":</p>
+<ul>
+<li>
+<p>Cột thứ nhất:</p>
+<ul>
+<li>r: File/Folder có thể được đọc</li>
+<li>-: File không được phép đọc, folder không hiển thị file</li>
+</ul>
+</li>
+<li>
+<p>Cột thứ hai:</p>
+<ul>
+<li>w: File/Folder có thể được chỉnh sửa</li>
+<li>-: File/Folder không thể được chỉnh sửa, dữ liệu trong folder không thể thêm, xóa hay chỉnh sửa</li>
+</ul>
+</li>
+<li>
+<p>Cột thứ ba:</p>
+<ul>
+<li>x: File có thể được thực thi</li>
+<li>-: File không thể được thực thi</li>
+</ul>
+</li>
+</ul>
+<p>Ngoài ra đối với cột thứ ba liên quan đến thực thi, Linux còn có những ký hiệu khác như "t", "s", "S", tuy nhiên ta có thể tạm thời bỏ qua những giá trị đó.</p>
+<p>Giờ ta sẽ lấy nhanh một vài ví dụ, với hai user ở đây là "k4ahr" và "root":
+<img src="https://k4ahr.work/writeups/linux/rwx.png" alt="" /></p>
+<ul>
+<li>Đối với thư mục "Download", vì k4ahr là owner của thư mục đó, nên k4ahr có thể viết, đọc và thực thi trong thư mục đó.</li>
+<li>Đối với "file1.txt", k4ahr có thể đọc và viết lên file đó, nhưng không thể thực thi file đó nếu như đó là 1 file script</li>
+<li>Đối với "file2.txt", vì owner của file này là "root", nên ta nhìn vào dãy thứ ba là "r-x", có nghĩa những user khác như k4ahr có thể đọc và thực thi file đó, nhưng lại không thể chỉnh sửa file đó</li>
+</ul>
+<p>Tuy vậy, hầu hết các file hay thư mục ở đây luôn có thể được ghi đè quyền hạn nếu mặc dù không có bằng một trong hai cách:</p>
+<ul>
+<li>Sử dụng câu lệnh <a href="https://man.archlinux.org/man/chmod.1">chmod</a> để chỉnh sửa quyền hạn của một file/folder</li>
+<li>Sử dụng "sudo" để ghi đè mọi permission (vì sudo cấp quyền root tạm thời lmao)</li>
+</ul>
+<p>Và đó là những điều cơ bản cần hiểu về Linux. Nói chung đây mới chỉ là mức cơ bản nhất của Linux, nếu rơi vào rabbit hole của thế giới Linux thì còn rất nhiều vấn đề để chúng ta nói.</p>
+<p>Đây là lần đầu mình viết write-up, nên nếu bạn muốn góp ý cho bài write-up này, liên hệ mình qua: k4ahr@getgoogleoff.me</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/Main_page">Arch Linux Wiki</a></li>
+<li><a href="https://www.youtube.com/watch?v=LKCVKw9CzFo">100+ Linux Things you Need to Know</a></li>
+</ul>
+<p style="text-align:center;">
+    <img src="nclinux.gif" style="display:inline-block; width="88">
+    <img src="gnu-linux.gif" style="display:inline-block; width="88">
+</p>
+
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | Bandit wargame của OverTheWire</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      Bandit wargame của OverTheWire
+    </div>
+    <div class="des">
+      pretty cool game actually
+    </div>
+    <div class="date">
+      <strong>2025-02-13</strong>
+    </div>
+  </div>
+</div>
+
+<p>Theo mô tả, Bandit là một trong những Wargame do cộng đồng <a href="https://overthewire.org/wargames/">OverTheWire</a> cung cấp. Bandit hoàn toàn dành cho những người mới bắt đầu, vì nó giúp bạn tìm hiểu Linux bằng cách tương tác với giao diện. Đây sẽ là trải nghiệm và các cách giải của mình trong thời gian chơi Bandit của OTW. Trước khi bắt đầu, đây sẽ là những câu lệnh mình sẽ liên tục sử dụng qua quá trình giải trò chơi:</p>
+<ul>
+<li>ls: Hiển thị những file và folder đang nằm trong thư mục hiện tại</li>
+<li>cd: Thay đổi thư mục làm việc hiện tại</li>
+<li>cat: Xuất dữ liệu text ASCII của một file</li>
+<li>file: Xuất dữ liệu metadata của một file</li>
+<li>man: Sách HDSD cho mọi câu lệnh</li>
+</ul>
+<p>Tạm thời vậy đã, ta bắt đầu thôi.</p>
+<h1 id="level-0"><strong>Level 0</strong></h1>
+<p>Để bắt đầu trò chơi, ta sẽ cần đăng nhập bằng SSH vào host <strong>bandit.labs.overthewire.org</strong>, port 2220, username và mật khẩu là "bandit0".</p>
+<p><img src="https://k4ahr.work/writeups/bandit/ssh.gif" alt="" /></p>
+<p>Cơ chế hoạt động của trò chơi này là có số lượng user từ "bandit0" đến "bandit34", với mỗi user tương ứng với một level. Và với mỗi user sẽ được giấu một mật khẩu hoặc những cách để có thể truy cập vào level tiếp theo.</p>
+<p>Trong thư mục home của "bandit0", ta sẽ thấy một file readme chào mừng người chơi, cùng với password cho ta lên level tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv0.png" alt="" /></p>
+<p>Một cái mình thấy hơi phiền là mình không thể đổi nhanh level bằng cách tiếp tục SSH server game bằng "localhost", nên ta sẽ phải logout SSH và đăng nhập vào session mới với user của level tiếp theo :v</p>
+<p><img src="https://k4ahr.work/writeups/bandit/annoy.png" alt="" /></p>
+<h1 id="level-1"><strong>Level 1</strong></h1>
+<p>Mật khẩu tiếp theo chứa trong một file có tên là "-". Vì tên file có kí tự bắt đầu là một gạch ngang, nên khi khai báo tên file sẽ bị trùng với cách khai báo kèm flag của một số lệnh. Để xử lí, ta thêm ký hiệu "./" vào phía trước, vì "./" đại diện cho thư mục hiện tại mà ta đang hoạt động.</p>
+<p>Ta sẽ chạy lệnh: <code>cat ./-</code>, và có được mật khẩu level 2.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv1.png" alt="" /></p>
+<h1 id="level-2"><strong>Level 2</strong></h1>
+<p>Mật khẩu chứa file tiếp theo chứa trong một file mang tên <strong>"spaces in this filename"</strong>. Vì file này có dấu cách trong tên, nên ta có hai cách để khai biến tên file:</p>
+<ul>
+<li>Gõ lên file cùng kí tự "" trước khi gõ dấu cách</li>
+<li>Nhập full tên file trong dấu ngoặc kép</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/bandit/lv2.png" alt="" /></p>
+<h1 id="level-3"><strong>Level 3</strong></h1>
+<p>Mật khẩu lần này chứa trong một thư mục "inhere". Ta "cd" vào thư mục và chạy lệnh "ls" để xuất các file có trong thư mục nhưng không có kết quả. Có vẻ đây là một <a href="https://wiki.archlinux.org/title/Dotfiles">dotfiles</a>, với dấu chấm đầu tên file và bị ẩn mặc định. Ta sẽ chạy lại lệnh "ls" với flag -a để hiển thị cả dotfiles, và xuất hiện một file "...Hiding-From-You". Xuất dữ liệu bằng "cat ...Hiding_From_You":</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv3.png" alt="" /></p>
+<h1 id="level-4"><strong>Level 4</strong></h1>
+<p>Lần này lại là một thư mục "inhere", nhưng chứa 9 file khác nhau, và theo OverTheWire nói rằng, mật khẩu nằm trong một file mà "con người đọc được". Ta có thể hiểu được sẽ chỉ có một file chứa dữ liệu đọc được như ASCII hoặc Unicode. Cách đơn giản nhất là check từng file, nhưng ta không thể làm thế nếu có quá nhiều file. Ta có 1 cách khác là sử dụng lệnh "file" lên tất cả các files trong thư mục "inhere"</p>
+<p>Ta sẽ chạy lệnh "file ./*" và lệnh sẽ áp dụng lên mọi files trong thư mục, và ta thấy tất cả các file đều chỉ ra kiểu dữ liệu chung là "data", trong khi "-file07" chứa dữ liệu ASCII mà ta đang tìm.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv4.png" alt="" /></p>
+<h1 id="level-5"><strong>Level 5</strong></h1>
+<p>Vẫn là thư mục "inhere", nhưng khi chạy "ls -la", ta thấy folder lần này chứa hơn 80 files riêng biệt:
+<img src="https://k4ahr.work/writeups/bandit/lv5.png" alt="" /></p>
+<p>Theo như đề bài, file lần này cụ thể rằng có dung lượng là 1033 bytes, không thực thi được và con người có thể đọc được. Bỏ qua yếu tố "đọc được", ta sẽ sử dụng lệnh sau:</p>
+<p style="text-align:center"><b>find ! -executable -size 1033c</b></p>
+<p>"! -executable" sẽ bỏ qua tất cả các file có thể thực thi, và "-size 1033c" sẽ cụ thể những file mang 1033 bytes dữ liệu. Và ta sẽ thấy file chúng ta cần tìm.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv5_2.png" alt="" /></p>
+<h1 id="level-6"><strong>Level 6</strong></h1>
+<p>Lần này theo đề bài, mật khẩu chứa trong một file nằm <strong>"somewhere on the server"</strong> (vl thật), và file mang các điều kiện sau:</p>
+<ul>
+<li>Sở hữu bởi user <strong>bandit7</strong></li>
+<li>Sở hữu bởi group <strong>bandit6</strong></li>
+<li>Chứa 33 bytes dữ liệu</li>
+</ul>
+<p>Vì file lần này nằm ở đâu đó trong server, ta sẽ phải chuyển thư mục hoạt động hiện tại về thư mục gốc với lệnh "<strong>cd /</strong>", và ta sẽ dùng lệnh <strong>find</strong> một lần nữa, với hai flag là "-user" và "-group" để tìm file có những phân quyền cụ thể như trên:</p>
+<p style="text-align:center"><b>find -user bandit7 -group bandit6 -size 33c</b></p>
+<p>Output đưa ra khá nhiều lỗi do một số file ta không check được, nhưng trong đống output đó vẫn có một kết quả đưa ra thành công:</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv6.png" alt="" /></p>
+<p style="text-align:center"><b>./var/lib/dpkg/info/bandit7.password</b></p>
+<p>Và tất nhiên khi ta dùng lệnh cat lên file này, ta có mật khẩu cần tìm cho level tiếp theo.</p>
+<h1 id="level-7"><strong>Level 7</strong></h1>
+<p>Mật khẩu tiếp theo nằm trong file "data.txt", bên cạnh cụm từ "millionth".
+Khi cat file này, ta thấy có hàng nghìn kết quả khác nhau, với một password khác nhau nằm cạnh một cụm từ ngẫu nhiên. Để tìm nhanh dòng text có cụm từ "millionth", ta sử dụng thêm "grep" ngay sau lệnh <strong>cat</strong>, và có ngay dòng text chứa password ta cần tìm:</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv7.png" alt="" /></p>
+<p style="text-align:center"><b>cat data.txt | grep millionth</b></p>
+<h1 id="level-8"><strong>Level 8</strong></h1>
+<p>Mật khẩu tiếp theo nằm trong file "data.txt" và chỉ xuất hiện một lần. Vậy có nghĩa là trong file có những mật khẩu fake lặp lại nhiều lần, và mật khẩu ta cần tìm chỉ hiện 1 lần. Một cách rất đơn gian là ta sử dụng thêm lệnh "uniq -u" kèm với lệnh <strong>sort</strong> nhằm lọc hết ra tất cả những kết quả bị lặp.
+<img src="https://k4ahr.work/writeups/bandit/lv8.png" alt="" /></p>
+<p style="text-align:center"><b>sort data.txt | uniq -u</b></p>
+<h1 id="level-9"><strong>Level 9</strong></h1>
+<p>Một lần nữa, trong file "data.txt", nằm cạnh ký tự "=". Mình sẽ sử dụng lệnh <strong>string</strong> để tìm cụm ký tự chứa password, kèm them lệnh <strong>grep</strong> để lọc ra những chuỗi cụm mà chứa "=".</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv9.png" alt="" /></p>
+<p style="text-align:center"><b>strings data.txt | grep =</b></p>
+<h1 id="level-10"><strong>Level 10</strong></h1>
+<p>Vẫn trong một file txt, nhưng lần này file đã được encode sang base64. Ta hoàn toàn có thể decode ngược lại bằng câu lệnh "base64" và flag <strong>-d</strong> ngay sau khi <strong>cat</strong> file text đã decode.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv10.png" alt="" /></p>
+<h1 id="level-11"><strong>Level 11</strong></h1>
+<p>data.txt, "where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions". Có vẻ mật khẩu lần này đã bị mã hoá qua định dạng ROT13. Vì mình không biết có câu lệnh nào decode ROT13 trên Linux không, nên mình chỉ đơn giản là <strong>cat</strong> file text và decode bằng <a href="https://cyberchef.io">cyberchef.io</a>.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv11.png" alt="" /></p>
+<h1 id="level-12"><strong>Level 12</strong></h1>
+<p>Lần này chúng ta có một đề bài khá hay. Mật khẩu được chứa trong 1 file <strong>data.txt</strong>, theo OverTheWire cho rằng đây là <a href="https://en.wikipedia.org/wiki/Hex_dump">Hex dump</a> của một file mà trước đó đã nén liên tiếp nhiều lần, và lần này ta cần sử dụng folder <strong>/tmp</strong> để chứa tạm thời công việc giải mã của mình.</p>
+<p>Đầu tiên mình sẽ tạo một folder trong <strong>/tmp</strong> bằng lệnh <strong>mktemp -d</strong> để có một folder tạm thời, và mình sẽ copy file <strong>data.txt</strong> vào trong đó.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/hex.png.png" alt="" /></p>
+<p>Sau đó mình sẽ decode lại file <strong>data.txt</strong> từ dạng file Hex_dump bằng câu lệnh <strong>"xxd -r data.txt data"</strong>. Sử dụng lệnh <strong>file</strong> để tìm ra định dạng của file <strong>data</strong> đã decode, ta thấy được đây là một file mang dữ liệu là "data: gzip compressed data", tức là 1 file nén đuôi <strong>.gz</strong>. Mình sẽ đổi tên file này để mang đuôi <strong>.gz</strong> và giải nén file này dùng lệnh <strong>gzip</strong>:
+<img src="https://k4ahr.work/writeups/bandit/gzip.png" alt="" /></p>
+<p>Bởi vì file này đã bị nén <em><strong>LÊN ĐẾN 7 LẦN</strong></em>, nên mình đã phải lặp lại quá trình này đúng 7 lần: check định dạng, đổi tên, giải nén; và thậm chí còn nén lên đến 3 định dạng khác nhau là <strong>.bz2</strong>, <strong>.gz</strong> và <strong>.tar</strong>, <em><del>nên là ông nào mà nghĩ ra cái level này ra ngoài đường cứ cẩn thận đấy..</del></em>
+<img src="https://k4ahr.work/writeups/bandit/lv12.png" alt="" /></p>
+<p>Và sau khi giải nén toàn bộ thì ta lại qua về một file text ASCII, và đơn giản là chứa password ta cần tìm.</p>
+<h1 id="level-13"><strong>Level 13</strong></h1>
+<p>Lần này password cho level tiếp theo được lưu trữ tại <strong>/etc/bandit_pass/bandit14</strong> và chỉ có level tiếp theo truy cập được. Chính vì vậy, đề bài cho rằng ta level tiếp theo ta sẽ truy cập bằng một key SSH cho level 14 được cấp.</p>
+<p>Nhưng từ đây khi ta check <strong>/etc/bandit_pass</strong>, ta sẽ thấy tất cả password của toàn bộ 34 level được chứa trong thư mục này, và chỉ truy cập được tuỳ vào user của level nào mà ta đang hoạt động. Điều này sẽ có thể giúp ích cho việc giải các level tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/bandit_pass.png" alt="" /></p>
+<p>Quay trở lại level 13, chúng ta sẽ truy cập bằng một SSH key được cấp trong thư mục hiện tại, mang tên file là <strong>ssh.private</strong>, và sử dụng nó bằng cách tên flag <strong>-i</strong> trong câu lệnh SSH của chúng ta.</p>
+<p style="text-align:center"><b>ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220</b></p>
+<h1 id="level-14"><strong>Level 14</strong></h1>
+<p>Mật khẩu tiếp theo có thể kiếm được bằng cách cấp password của level hiện tại vào port 30000 của <strong>localhost</strong>.</p>
+<p>Để hoàn thành được level này, ta cần sử dụng câu lệnh <strong>nc</strong> (netcat). Để cho dễ hiểu, <strong>netcat</strong> cho phép gửi và nhận dữ liệu giữa các máy tính qua các port khác nhau, có thể dùng để đơn giản giao tiếp hoặc truyền file.</p>
+<p>Trước khi ta sử dụng, vì level này ta đăng nhập thông qua một file sshkey, nên giờ ta sẽ phải lấy mật khẩu của level này tại <strong>/etc/bandit_pass/bandit14</strong> như đã nói từ trước. Sau đó ta sẽ tạo kết nối vào localhost qua port 30000, và cấp password của tầng này. Khi đó ta sẽ nhận lại phản hồi thành công, kèm theo password cho tầng tiếp theo. 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv14.png" alt="" /></p>
+<h1 id="level-15"><strong>Level 15</strong></h1>
+<p>Giống level trước, nhưng qua port 30001 kèm mã hoá SSL/TLS. Lần này ta sẽ dùng lệnh <strong>openssl s_client</strong>, hoạt động giống <strong>netcat</strong> nhưng cho phép ta sử dụng mã hoá SSL/TLS, kèm theo kiểm tra một số chứng chỉ kết nối, v.v..</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv15.png" alt="" /></p>
+<p style="text-align:center"><b>openssl s_client localhost:30001</b> và cấp password level trước</p>
+<h1 id="level-16"><strong>Level 16</strong></h1>
+<p>Lại giống level trước, nhưng lần này ta phải tự tìm port trong khoảng 31000 đến 32000. Ta sẽ dùng <strong>nmap</strong> để tìm.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/ports.png" alt="" /></p>
+<p style="text-align:center"><b>map localhost -p 31000-32000</b></p>
+<p>Kết quả trả về 5 port mở, test từng port bằng <strong>openssl s_client</strong>, ta thấy port 31790 phản hồi do có TLS/SSL. Nhưng khi cung cấp password level trước, hệ thống trả về "KEYUPDATE". Đề bài có nhắc đến vấn đề này và gợi ý check <strong>man page</strong> của <strong>openssl s_client</strong>, rằng vấn đề này xảy ra do xung đột với việc mật khẩu có chữ k ở đầu hay cái gì đấy mình chả biết. Cách khắc phục đơn giản là thêm flag -quiet.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv16.png" alt="" /></p>
+<p style="text-align:center"><b>openssl s_client -connect localhost:31790 -quiet</b></p>
+<p>Và vì một lý do nào đó mà hệ thống cho ta một đoạn key SSH thay vì password. Nên mình phải thoát SSH và sao chép key thành file vào hệ thống để đăng nhập.</p>
+<h1 id="level-17"><strong>Level 17</strong></h1>
+<p>Màn này khá đơn giản, 2 files là password.old và password.new. 2 file sẽ chỉ khác nhau ở 1 dòng, và dòng nó nằm trong password.new chính là password cho level tiếp theo. Ta sẽ dùng lệnh <strong>diff</strong>.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv17.png" alt="" /></p>
+<h1 id="level-18"><strong>Level 18</strong></h1>
+<p>Khi đăng nhập vào level này, ta sẽ có kết quả ""Byebye!" và ngay lập tức bị đạp ra khỏi SSH. Theo đề bài, password nằm ngay trong 1 file <strong>readme</strong>, trong folder home của level này. Ta có thể vớ nhanh file <strong>readme</strong> bằng cách thêm lệnh đọc file <strong>readme</strong> sau lệnh SSH.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv18.png" alt="" /></p>
+<h1 id="level-19"><strong>Level 19</strong></h1>
+<p>Ta được cấp 1 file binary trong home directory. Kiểm tra bằng <strong>ls -la</strong>, ta có kết quả sau:</p>
+<p><img src="https://k4ahr.work/writeups/bandit/ls.png" alt="" /></p>
+<p>Ta thấy được rằng <strong>bandit19</strong> có thể thực thi file, nhưng owner file là bandit20. Khi thực thi thử file, ta có kết quả sau:
+<img src="https://k4ahr.work/writeups/bandit/bandit20.png" alt="" />
+Vậy có nghĩa là file này ta thực thi được tại level 19, nhưng nó sẽ chạy lệnh tiếp theo với quyền của bandit20. Lợi dụng điều này và ta sẽ dùng <strong>cat</strong> để lấy password của bandit20 tại <strong>/etc/bandit_pass</strong>:</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv19.png" alt="" /></p>
+<h1 id="level-20"><strong>Level 20</strong></h1>
+<p>Level này khá lằng nhằng, ta phải tự mở một port bất kỳ bằng <strong>netcat</strong>, sử dụng một file binary được cấp trong folder home tên lầ "suconnect" kèm port mà ta mở, rồi cấp password level. Khi đó tại <strong>netcat</strong> ta mở trước đó, sẽ xuất ra password cho level tiếp theo.</p>
+<p>Vì ta cần làm hai tác vụ một lúc, ta sẽ sử dụng <strong>tmux</strong> để hoạt động hai session cùng một lúc. Đây là giải pháp của mình:</p>
+<ul>
+<li>Mở <strong>tmux</strong></li>
+<li>Tổ hợp CTRL + B, sau đó C để tạo session thứ 2</li>
+<li>Tổ hợp CTRL + B kèm 0 hoặc 1 tuỳ session</li>
+<li>Session đầu ta mở một port bằng <strong>netcat</strong>: <code>nc -l -p 1234</code></li>
+<li>Session sau ta chạy file binary: <code>./suconnect 1234</code></li>
+<li>Quay lại session <strong>netcat</strong>, ta cấp password level trước đó và được trả về với password level tiếp theo.</li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/bandit/lv20.png" alt="" /></p>
+<h1 id="level-21"><strong>Level 21</strong></h1>
+<p>Một tác vụ được chạy liên tục tại <strong>/etc/cron.d/</strong>. Ta sẽ <code>cd</code> vào thực mục này và thấy 1 loạt script cronjob khác nhau. Vì level tiếp theo là 22, nên mình đã check file "cronjob_bandit22". Bên trong file chứa 1 lệnh được chạy liên tục theo perm của bandit22. <code>cat</code> thử file đấy và thấy rằng file password của bandit22 ở <strong>/etc/bandit_pass/bandit22</strong> được copy vào một file ở /tmp. <code>cat</code> file đó và ta thấy mật khẩu của level tiếp theo.
+<img src="https://k4ahr.work/writeups/bandit/lv21.png" alt="" /></p>
+<h1 id="level-22"><strong>Level 22</strong></h1>
+<p>Level này khá tương tự level trước, nên mình <code>cat</code> và chạy thử file "cronjob_bandit23".
+<img src="https://k4ahr.work/writeups/bandit/cat22.png" alt="" /></p>
+<p>Ta sẽ cần phân tích file này. Giá trị của lệnh "whoami" sẽ được đưa vào biến "myname", và sử dụng "myname" để chạy một lệnh có kết quả lưu tại "mytarget". Vì script crobjob khi chạy, giá trị của "whoami" là bandit22, và password của bandit22 được lưu tại 1 thư mục mang tên là giá trị của "mytarget", khi user chạy là bandit22. Vì file cronjob chạy tự động ở bandit23, tức có nghĩa cũng đang có một file mang tên là giá trị của "mytarget" khi user là bandit23.</p>
+<p>Giải pháp khá đơn giản, ta chỉ cần tìm giá trị của "mytarget" khi user là bandit23, bằng cách tự chạy câu lệnh xuất giá trị "mytarget", với việc tự thay "whoami" bằng bandit23. Từ đó ta sẽ tìm file mang tên giá trị ta có được trong <strong>/tmp</strong> và <code>cat</code> file đó.
+<img src="https://k4ahr.work/writeups/bandit/lv22.png" alt="" /></p>
+<h1 id="level-23"><strong>Level 23</strong></h1>
+<p>Cũng là crobjob, mình <code>cat</code>, chạy thử các kiểu "cronjob_bandit24".
+<img src="https://k4ahr.work/writeups/bandit/cat23.png" alt="" /></p>
+<p>Để hiểu đơn giản, script này sẽ chạy và đồng thời xoá hết tất cả các script nằm trong <strong>/var/spool/bandit24/foo</strong>, do script này chạy trong user bandit24 cùng perm của bandit24 luôn. Và điều đặc biệt là trong script có lọc và chỉ chạy các script mà owner là bandit23.</p>
+<p>Cách xử lí bây giờ là tạo một script mà sẽ copy pass của level tiếp theo vào 1 file trong <strong>/tmp</strong>, sau đó đưa script đấy vào trong <strong>/var/spool/bandit24/foo</strong> và chờ nó được chạy tự động bởi user bandit24. Đây là list các bước làm:</p>
+<ul>
+<li>Tạo 1 folder để làm việc bằng <code>mktemp -d</code> tại <code>/tmp</code></li>
+<li>Tạo 1 file script mới bằng <code>vim hack.sh</code>. Đây sẽ là nội dung bên trong script:</li>
+</ul>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>#!/bin/bash&#39;
+</span><span>cat /etc/bandit_pass/bandit24 &gt; /tmp/bandit24_pass&#39;
+</span></code></pre>
+<ul>
+<li>Lưu script lại và chạy <strong>chmod +x hack.sh</strong> để file script có thể chạy được</li>
+<li>Copy script vào <strong>/var/spool/bandit24/foo</strong>, ngồi chờ 1 lúc hay gì đấy và check file <strong>/tmp/bandit24_pass</strong></li>
+</ul>
+<p><img src="https://k4ahr.work/writeups/bandit/lv23_1.png" alt="" />
+<img src="https://k4ahr.work/writeups/bandit/lv23_2.png" alt="" /></p>
+<h1 id="level-24"><strong>Level 24</strong></h1>
+<p>Level tiếp theo quay trở về với <strong>netcat</strong>, tại port 30002. Lần này ta cần nhập password kèm 1 đoạn mã PIN 4 chữ số. Đề bài gợi ý rằng ta có thể brute-force phần mã PIN này. Vậy thì ta sẽ tạo 1 script brute-force trong <strong>/tmp</strong> và chạy thôi.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv24_1.png" alt="" /></p>
+<p style="text-align:center"><b>Tạo script</b></p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv24_3.png" alt="" /></p>
+<p style="text-align:center"><b>Brute-force goes brrrrrrrrrrr</b></p>
+<p><em>Note: nếu bạn mò được, bạn sẽ có thể tìm được script mình sử dụng, còn mình sẽ không show script của mình tại đây do script của mình đã gây overload server.</em>
+<img src="https://k4ahr.work/writeups/bandit/overload.png" alt="" /></p>
+<h1 id="level-25"><strong>Level 25</strong></h1>
+<p>Level tiếp theo hoạt động hơi kì. Ta được cấp ngay SSH key cho level 26, nhưng khi đăng nhập vào level tiếp theo, ta bị hệ thống đẩy ra do cách cài đặt shell cho level này, cụ thể là với kết quả trả ra là "Connection to bandit.labs.overthewire.org closed.".</p>
+<p>Đầu tiên mình sẽ kiểm tra shell của bandit26 qua file <strong>/etc/passwd</strong>, thấy được rằng bandit26 đang sử dụng một shell tên là <strong>showtext</strong>. <strong>cat</strong> thử file shell này, ta thấy ở trong file, hệ thống chạy một lệnh tên là <code>more</code> vào một file <strong>text.txt</strong>, kiểm tra thử cả file text này nhưng có vẻ level này không có perm, nên ta bỏ qua file này.
+<img src="https://k4ahr.work/writeups/bandit/lv25.png" alt="" />
+Nói thêm về <code>more</code>, là một lệnh để xem file mà có thể tương tác được. Một tính năng của <code>more</code> đó chính là nó sẽ đổi từ tương tác thông thường sang chế độ command khi mà terminal xuất ra quá bé. Mình check thêm <code>man</code> page của <code>more</code> thì thấy có một command là <code>v</code>, sẽ đưa chúng ta vào editor mode, và mặc định cho chế độ này sẽ sử dụng <code>vim</code> là editor.
+<img src="https://k4ahr.work/writeups/bandit/more.png" alt="" /></p>
+<p>Vậy là mình cho bé cửa sổ lệnh, SSH vào level 26 và spam <code>v</code>, cuối cùng cũng được đưa vào editor mode là <code>vim</code>.
+<img src="https://k4ahr.work/writeups/bandit/vim.gif" alt="" /></p>
+<p>Từ trong này, vì mình đang ở level 26, mình có thể dùng <code>vim</code> để mở file chứa password mặc định của các level tại <code>/etc/bandit_pass/bandit26</code> bằng lệnh <code>:e</code>. Thực ra thì việc lấy password cho level 26 là optional, nhưng mình muốn lưu trữ tất cả password của mọi level, mặc dù OverTheWire nói rằng họ thường thay đổi password :v.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv25.gif" alt="" /></p>
+<p>Sau khi lấy được password cho level 26, mình sẽ thay đổi shell hiện tại là :set <code>shell=bin/bash</code>, và truy cập lại về shell bằng <code>:shell</code>.</p>
+<h1 id="level-26"><strong>Level 26</strong></h1>
+<p>Vậy là đã vào được level 26, <code>ls</code> thì thấy có file binary giống với level 19 trước đó, nên ta thực hiện tương tự và lấy password cho level tiếp theo.
+<img src="https://k4ahr.work/writeups/bandit/lv26.png" alt="" /></p>
+<h1 id="level-27"><strong>Level 27</strong></h1>
+<p>Level 27 không có gì khó. Ta được cấp 1 git repository, và việc của ta chỉ là clone cái repo đó vào trong 1 folder ở <code>/tmp</code>. Repo chứa một file readme, <code>cat</code> thử file đấy là ta có password cho level tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv27.png" alt="" /></p>
+<h1 id="level-28"><strong>Level 28</strong></h1>
+<p>Giống level trước, clone và check file README, thì lần này password không nằm trong này. Mình dùng <code>ls -la</code> để check nếu có file ẩn thì thấy thư mục <code>.git</code>. Từ đó mới nhớ ra mình có thể check commit log của repo này.
+<img src="https://k4ahr.work/writeups/bandit/log.png" alt="" /></p>
+<p>Sử dụng lệnh <code>git log</code>, mình thấy có một commit tên là <code>add missing data</code>, nối sau đó là commit <code>fix info leak</code>. Có thể hiểu được <code>fix info leak</code> là commit xoá password, tức commit trước đó chứa password cho level tiếp theo, mình check bằng lệnh <code>git show &lt;commit_id&gt;</code>.
+<img src="https://k4ahr.work/writeups/bandit/lv28.png" alt="" /></p>
+<p>Từ đây mình cũng có một lời khuyên, rằng nếu các bạn mà có leak info nào đó không mong muốn trên 1 cái repo nào đó như ở GitHub hay Codeberg, thì hoặc là bạn private cái repo đấy, hoặc là bạn xoá hẳn repo đấy luôn ¯\<em>(ツ)</em>/¯ .</p>
+<h1 id="level-29"><strong>Level 29</strong></h1>
+<p>Lại giống level trước, clone và <code>cat</code> file README, không có password. Chạy <code>git log</code> thì thấy có một branch được merge từ orgin/HEAD sang origin/master. Vậy có nghĩa là cái repo này có nhiều branch hơn bình thường, nên mình check bằng lệnh <code>git branch -a</code> và thấy một vài branch khác nhau. Mình check thử nhánh <code>dev</code> bằng <code>git checkout dev</code> và <code>cat</code> lại file README của nhánh này, thì thấy được password tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv29.png" alt="" /></p>
+<h1 id="level-30"><strong>Level 30</strong></h1>
+<p>Giống level trước, <code>clone</code> và <code>cat</code>, ta có một dòng là <strong>"just an epmty file... muahaha"</strong> bị sai chính tả, thua....</p>
+<p><img src="https://k4ahr.work/writeups/bandit/typo.png" alt="" /></p>
+<p>Check git log và branch thì chỉ có hai branch đã merge với nhau nên không có gì đặc biệt.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/check.png" alt="" /></p>
+<p>Ta còn có một lệnh nữa là <code>git tag</code>, dùng để check những commit được tag lại cụ thể. Và sử dụng, mình thấy có một tag thê là <strong>secret</strong>, check bằng lệnh <code>git show</code>.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv30.png" alt="" /></p>
+<h1 id="level-31"><strong>Level 31</strong></h1>
+<p>Vẫn vậy, clone và check README, ta có một nhiệm vụ là push một file text với nội dụng 'May I come in?' lên repo.
+<img src="https://k4ahr.work/writeups/bandit/key.png" alt="" /></p>
+<p>Với một người đã hoạt động với lệnh <code>git push</code> nhiều lần với trang web của mình (open-sourced under the MIT License btw), việc đưa một file vào repo, tạo commit và push lên khá là đơn giản. Đây là quá trình của mình:</p>
+<ul>
+<li>Tạo file <strong>key.txt</strong> bằng lệnh <code>echo 'May I come in?' &gt; key.txt</code></li>
+<li>Thêm file key vừa tạo vào commit bằng <code>git add -f key,txt</code></li>
+<li>Tạo commit <code>git commit -a</code> và nhập nội dung của commit vào trong text editor được prompt lên</li>
+<li>Đẩy file key lên repo bằng <code>git push -u origin master</code></li>
+</ul>
+<p>Và mặc dù repo từ chối push của chúng ta, mình lại nhận được kết quả trả về chứa password cho level tiếp theo.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv31.png" alt="" /></p>
+<h1 id="level-32"><strong>Level 32</strong></h1>
+<p>Kết thúc về git, đăng nhập vào level này, ta lại được đưa vào một shell kỳ lạ gì đấy tên là "UPPPERCASE SHELL". Đoán rằng có thể các lệnh ở shell này cần phải viết hoa nhưng có vẻ không phải.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/shell.png" alt="" /></p>
+<p>Sau một lúc tìm hiểu thì có vẻ Linux có nhận biến $ là các ký tự uppercase, nên mình đã thử <code>$0</code>, hay còn được biết đến chính là một biến nối đến shell thông thường. Đó cũng chính là lí do thông thường terminal của Linux hay có dấu $ nằm ở sau hostname.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/$.png" alt="" /></p>
+<p>Quay lại các bước truyền thống, <code>ls -la</code>, thì tự dưng mình lại thấy cái UPPPERCASE SHELL lại mang owner là <strong>bandit33</strong>. Check thử xem user hiện tại là gì bằng lệnh <code>whoami</code>, kết quả trả về là bandit33. Tận dụng điều này, mình lấy password của level tiếp theo tại <code>/etc/bandit_pass/bandit33</code></p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv32.png" alt="" /></p>
+<h1 id="level-33"><strong>Level 33</strong></h1>
+<p>Vào khoảng thời gian mình viết write-up này, có vẻ như hiện tại đây là level cuối cùng của trò chơi bandit.</p>
+<p><img src="https://k4ahr.work/writeups/bandit/lv33.png" alt="" /></p>
+<p>Đây là đánh giá nhanh một số level theo cảm nhận của mình:</p>
+<ul>
+<li>Level dễ nhất: 1 - Chắc chắn rồi</li>
+<li>Level khó nhất: 23 - Cần có kỹ năng phân tích tốt</li>
+<li>Level yêu thích của mình: 31 - Những câu lệnh sử dụng khá là có ích khi hoạt động nhiều với <code>git</code></li>
+<li>Level mình ghét nhất: 12 - Tuy không khó nhưng level này nhất lằng nhằng và cồng kềnh không cần thiết</li>
+<li>Level độc nhất: 20 - Cần kỹ năng tư duy logic cùng với việc làm đa tác vụ</li>
+</ul>
+<p>Như mình đã nói, bandit mình đánh giá là một trò khá là hay cho những ai muốn học tập và làm quen, tìm hiểu về Linux, cũng như là những kỹ năng khác liên quan đến CNTT như mạng máy tính, phân quyền, git, v.v..</p>
+<p><a href="https://bin.disroot.org/?3fdc0550b637af9d#7UDbCtZvj7pTcziUXwfMAPMDz48feoexyjK2w6178tjN">File Password</a> của từng level bandit trên (khá chắc là sẽ sớm bị thay đổi lmao). Mật khẩu để truy cập file là bài hát có nhiều view nhất của một ban nhạc tan rã năm 2023.</p>
+<p>Nếu bạn có gì thắc mắc hoặc muốn đóng góp, hãy gửi cho mình tại: k4ahr@getgoogleoff.me</p>
+<ul>
+<li><a href="https://overthewire.org/wargames/bandit/">Bandit by OverTheWire</a></li>
+</ul>
+<p style="text-align: center;">
+  <img src="miku.gif" style="display: inline-block; " width="88">
+  <img src="linuxgames_button.gif" style="display: inline-block; " width="88">
+</p>
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://k4ahr.work/rss.xml">
+        
+        <title> | Protecting yourself from the &quot;World Wild Web&quot;</title>
+
+        <link rel="preload" href="https://k4ahr.work/css/style.css" as="style">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/reset-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://raw.githack.com/Speyll/suCSS/main/suCSS-min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://k4ahr.work/css/style.css">
+        <link rel="stylesheet" href="https://k4ahr.work/css/custom.css">
+
+        <!-- Add favicon with appropriate sizes -->
+        <link rel="icon" href="https:&#x2F;&#x2F;k4ahr.work/favicon.ico">
+        
+    </head>
+    <body>
+        
+        
+        
+        
+        <nav id="nav-bar">
+            
+            <a href="&#x2F;" class="">
+                
+                &#x2F;home&#x2F;
+            </a>
+            
+            <a href="&#x2F;blog" class="">
+                
+                &#x2F;blog&#x2F;
+            </a>
+            
+            <a href="&#x2F;link" class="">
+                
+                &#x2F;link&#x2F;
+            </a>
+            
+            <a href="&#x2F;misc" class="">
+                
+                &#x2F;misc&#x2F;
+            </a>
+            
+            <a href="&#x2F;about" class="">
+                
+                &#x2F;about&#x2F;
+            </a>
+            
+
+            <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme"
+                data-icon-base="https://k4ahr.work/icons.svg"
+                data-icon-dark="#darkMode"
+                data-icon-light="#lightMode"
+                data-sound-src="https://k4ahr.work/click.ogg">
+                <svg class="icon">
+                    <use id="theme-icon"></use>
+                </svg>
+            </div>
+        </nav>
+
+        <main>
+            
+<div class="card a-white">
+  <div class="card-content">
+    <div class="title">
+      Protecting yourself from the &quot;World Wild Web&quot;
+    </div>
+    <div class="des">
+      Your address maybe floating somewhere on the net
+    </div>
+    <div class="date">
+      <strong>2024-12-29</strong>
+    </div>
+  </div>
+</div>
+
+<p>What you have seen of the Internet is most likely just a little tip of the iceberg, so sometimes you just have to protect yourself from it every time you're online on the web. I'm going to give you some guides, from the basic to the most advanced method of protecting you from the obscure internet.</p>
+<h3 id="bare-minimum-firewall">Bare minimum: Firewall</h3>
+<p>Firewall is the first line of defense for your computer, it's like a gatekeeper that filters the incoming and outgoing traffic of your computer. Most of the operating systems have a built-in firewall, like Windows Firewall for Windows, or UFW for Linux, which are all preconfigured basic level of firewall that's capable of denying unauthorized access by filtering network traffic and blocking malicious content. You can also use third-party firewall software, like GlassWire or ZoneAlarm.</p>
+<p>Most firewalls are enabled by default, but if you're wondering if it's enabled on your machine or not, here's a quick overview:</p>
+<p><img src="https://k4ahr.work/blog/protect/win_fw.png" alt="" title="Windows Firewall settings" /></p>
+<p style="text-align: center;">
+  Windows: Go to Control Panel > System and Security > Windows Defender Firewall
+</p>
+<p><img src="https://k4ahr.work/blog/protect/macos_fw.PNG" alt="" title="MacOS Firewall settings" /></p>
+<p style="text-align: center;">
+  MacOS: Go to System Preferences > Security & Privacy > Firewall
+</p>
+<p><img src="https://k4ahr.work/blog/protect/linux_fw.jpg" alt="" title="Linux Firewall settings" /></p>
+<p style="text-align: center;">
+  Linux: Open a terminal and type <code>sudo ufw status</code>
+</p>
+<h3 id="intermediate-software-and-security-up-to-date">Intermediate : Software and Security up-to-date</h3>
+<p>Keeping your software and security up-to-date is the next step to protect yourself from the hidden dangers of the internet. Most of the time, software updates are released to fix bugs and vulnerabilities that can be exploited by hackers. It's important to keep your software up-to-date, especially your operating system, web browser, and antivirus software.</p>
+<p>Most of the operating systems have an automatic update feature, so you don't have to worry about updating your system manually. For Windows, you can go to Settings &gt; Update &amp; Security &gt; Windows Update, and for MacOS, you can go to System Preferences &gt; Software Update.</p>
+<p>This is also one of the main reasons why you should not use any end-of-support (EOS) operating system such as Windows 7 or lower, as most of them do not have up-to-date security patches and are vulnerable to attacks.</p>
+<p><img src="https://k4ahr.work/blog/protect/update.png" alt="" title="Windows Update settings" /></p>
+<h3 id="advanced-adblock-and-host-file">Advanced: Adblock and "host" file</h3>
+<p>Ad blockers are browser extensions that block ads on websites, which can also block malicious content and trackers. There are many ad blockers available, but for my personal reference, I would recommend you to use <a href="https://ublockorigin.com/">uBlock Origin</a>, although Chrome's newest Manifest v3 update may affect its functionality (everyone thanks Google !!).</p>
+<p>Another method is to use the "host" file to block malicious websites. The "host" file is a text file that maps hostnames to IP addresses, and you can use it to block access to certain websites by redirecting them to a non-existent IP address. You can find the "host" file in the following directory:</p>
+<p>Windows: <code>C:\Windows\System32\drivers\etc\hosts</code> (You may have to open it using any text editor with administrator privilege)</p>
+<p><img src="https://k4ahr.work/blog/protect/host.png" alt="" title="Host file settings" /></p>
+<p>I recommend to check out <a href="https://someonewhocares.org/hosts/">someonewhocares's host file</a>, which contains many of dangerous websites and trackers. They also have a short guide for installation in other OS such as macos and Linux.</p>
+<h3 id="optional-adguard-home">Optional: AdGuard Home</h3>
+<p><a href="https://github.com/AdguardTeam/AdGuardHome">AdGuard Home</a> is a network-wide software for blocking ads and tracking. After you set it up, it'll cover ALL your home devices, and you don't need any client-side software for that. It acts as a DNS server that filters out ads and trackers. It's a bit more advanced than using an ad blocker, which required a local VPS like a homelab, a Rasberry Pi, or a router that has firmware support such as <a href="https://openwrt.org/">OpenWrt</a>, but it's worth it if you want to protect all your devices from ads and trackers.</p>
+<p><img src="https://k4ahr.work/blog/protect/adguard.png" alt="" title="MY AdGuard Home settings" /></p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Protecting yourself from the obscure internet is important, as the Internet is a vast place with many dangers. By following these guides, you can protect yourself from most of the threats that are lurking on the web. Remember, it's better to be safe than sorry, and trust me, you would never want your data being exposed on the web.</p>
+<p style="text-align: center;">
+  <img src="neighborhoodsmall.gif" style="display: inline-block; " width="88">
+  <img src="virusalert.gif" style="display: inline-block; " width="88">
+</p>
+
+        </main>
+
+        <footer>
+            
+    <h2><i>"Cuộc đời còn bao nhiêu điều mình sẽ mãi chưa làm"</i></h2>
+    <section id="button">
+        <img src="https://k4ahr.work/button/k4ahr.gif" title="My webring button, use this if you want to add me to your website." style="display: inline-block;" width="88">
+        <a href="https://www.youtube.com/watch?v=9mA7h1jfxc8"><img src="https://k4ahr.work/button/ngot.gif" style="display: inline-block;" width="88"></a>
+        <img src="https://k4ahr.work/button/cinnamonroll.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/insanity.gif" style="display: inline-block;" width="88">
+        <img src="https://k4ahr.work/button/miku.gif" style="display: inline-block;" width="88">
+    </section>
+
+    <p id="changelog">&copy; 2024 K4ahr, <a href="https://gitlab.com/K4ahr/zola-site">open-sourced</a> under the <a href="https://opensource.org/license/mit">MIT License</a></p>
+    <p>Made using <a rel="noopener noreferrer" href="https://github.com/Speyll/anemone" target="_blank">anemone</a> Zola theme</p>
+  
+        </footer>
+
+        <!-- Move JS to end of body and add defer -->
+        <script src="https://k4ahr.work/js/script.js" defer></script>
+    </body>
+</html>

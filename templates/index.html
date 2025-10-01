@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section id="introduce">
+        <h1><i><b>K4ahr</b></i></h1>
+        <p>Welcome to my little corner inside the Web.</p>
+    </section>
+
+    
+    <section id="about">
+        <p>This website is <b style="color: yellow;">FAST</b>, <b style="color: yellow;">AD-FREE</b> and protected by <b style="color: orange;">CLOUDFLARE</b> !!!</p>
+    </section>
+    <h1>K4ahr is/was listening to:</h1>
+    <section id="music_widget">
+        <style>
+    
+            #now-playing {
+                display: flex;
+                flex-direction: column;
+                border: 2px dashed var(--accent);
+                border-radius: 10px;
+                width: 800px;
+                overflow: hidden;
+                margin-bottom: 20px;
+            }
+            
+            #now-playing:hover {
+                transform: scale(1.05);
+                transition: .2s all;
+                background: var(--bg);
+            }
+    
+    
+            #content {
+                display: flex;
+                align-items: center;
+                padding: 15px;
+            }
+    
+            #album-art {
+                width: 100px;
+                height: 100px;
+                border-radius: 5px;
+                margin-right: 15px;
+            }
+    
+            #details {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .info {
+                margin: 5px 0;
+            }
+    
+            .info a {
+                color: #1db954;
+                text-decoration: none;
+            }
+    
+            .info a:hover {
+                text-decoration: underline;
+            }
+
+            @media (max-width: 768px) {
+                #now-playing {
+                    width: 350px;
+                }
+            }
+        </style>
+    
+        <div id="now-playing">
+            <div id="content">
+                <img id="album-art" src="placeholder.png" alt="Album Art">
+                <div id="details">
+                    <div id="song-name" class="info">
+                        <a href="#" target="_blank">Song Name</a>
+                    </div>
+                    <div id="artist-name" class="info">Artist Name</div>
+                    <div id="album-name" class="info">Album Name</div>
+                    <div id="footer" style="font-size: 0.9em;">
+                        <i>Powered by <a href="https://www.last.fm" target="_blank" style="color: #1db954; text-decoration: none;">Last.fm</a></i>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            async function fetchLastPlayedSong() {
+                const username = 'K4ahr';
+                const apiKey = '06ad86458637a9f40bf4adae89006bd7'; //"If you are seeing this line, then you have found my last.fm API key. Please do not make any unauthorized usage with it :("
+                const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json`;
+    
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    const track = data.recenttracks.track[0];
+    
+                    // Update HTML
+                    document.getElementById('album-art').src = track.image[2]['#text'] || 'placeholder.png';
+                    const songNameElement = document.getElementById('song-name').querySelector('a');
+                    songNameElement.textContent = track.name || 'Unknown Song';
+                    songNameElement.href = track.url || '#';
+    
+                    document.getElementById('artist-name').textContent = track.artist['#text'] || 'Unknown Artist';
+                    document.getElementById('album-name').textContent = track.album['#text'] || 'Unknown Album';
+                } catch (error) {
+                    console.error('Error fetching song data:', error);
+                    document.getElementById('song-name').textContent = 'Error fetching song data';
+                }
+            }
+    
+            // Fetch song data on load
+            fetchLastPlayedSong();
+    
+            // Optionally refresh every 60 seconds
+            setInterval(fetchLastPlayedSong, 60000);
+        </script>
+    </section>
+
+
+
+    <section id="site-map">
+        <h2>Site Map</h2>
+        <ul>
+            <li>
+                <a href="{{ get_url(path='/misc') }}" style="display: inline;">Miscellaneous:</a>
+                <p style="display: inline; margin: 0;">Where I share other stuff</p>
+            </li>
+            <li>
+                <a href="{{ get_url(path='/blog') }}" style="display: inline;">Blog:</a>
+                <p style="display: inline; margin: 0;">If you want to listen to me yapping</p>
+            </li>
+            <li>
+                <a href="{{ get_url(path='/link') }}" style="display: inline;">Webring:</a>
+                <p style="display: inline; margin: 0;">Cool websites and cool people</p>
+            </li>
+            <li>
+                <a href="{{ get_url(path='/about') }}" style="display: inline;">About me:</a>
+                <p style="display: inline; margin: 0;">Should be “explanatory,” no ?</p>
+            </li>
+            <li>
+                <a href="https://status.k4ahr.work/status/main" style="display: inline;">Services's Status:</a>
+                <p style="display: inline; margin: 0;">My self-hosted services's status</p>
+            </li>
+        </ul>
+    </section>
+
+        <section id="contact">
+        <h2>Online Presence</h2>
+        <ul>
+            <li>
+                <p style="display: inline; margin: 0;">Mail:</p>
+                <a href="mailto:k4ahr@getgoogleoff.me" style="display: inline;">k4ahr[at]getgoogleoff.me</a>
+            </li>
+            <li>
+                <p style="display: inline; margin: 0;">Mastodon:</p>
+                <a href="https://mastodon.social/@kabonar0" style="display: inline;">NotKabonarA</a>
+            </li>
+            <li>
+                <p style="display: inline; margin: 0;">Last.fm:</p>
+                <a href="https://www.last.fm/user/K4ahr" style="display: inline;">K4ahr</a>
+            </li>
+            <li>
+                <p style="display: inline; margin: 0;">Blog's RSS:</p>
+                <a href="/blog/atom.xml" style="display: inline;">Here</a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="counter" style="text-align: center;">
+        <img style="margin: 1rem auto;" src="https://count.getloli.com/@@K4ahr?name=%40K4ahr&theme=rule34&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto">
+    </section>
+
+
+{% endblock content %}
